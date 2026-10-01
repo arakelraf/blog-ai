@@ -11,8 +11,8 @@ if (!base) {
   process.exit(0);
 }
 
-// Match href="/ or src="/ not followed by another slash (skip protocol-relative).
-const re = /(href|src)="\/(?!\/)/g;
+// Match href="/ , src="/ or action="/ not followed by another slash (skip protocol-relative).
+const re = /(href|src|action)="\/(?!\/)/g;
 let count = 0;
 
 function walk(dir) {
