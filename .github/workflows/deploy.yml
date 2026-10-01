@@ -1,0 +1,46 @@
+name: Build & deploy site to gh-pages
+
+on:
+  push:
+    branches: [claude/lucid-heisenberg-d05rhn, main]
+    paths: ["site/**", ".github/workflows/deploy.yml"]
+  workflow_dispatch:
+
+# Only contents:write is needed — we push the built site to the gh-pages branch.
+# (We do NOT use the Pages API, which the app can't access.)
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-gh-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build
+        working-directory: site
+        run: |
+          pnpm install --no-frozen-lockfile
+          pnpm build
+          BASE=/blog-ai node scripts/rewrite-base.mjs dist
+          touch dist/.nojekyll
+      - name: Push to gh-pages
+        working-directory: site/dist
+        run: |
+          git init -q
+          git checkout -q -b gh-pages
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Deploy ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
