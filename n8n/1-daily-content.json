@@ -1,0 +1,55 @@
+{
+  "name": "blog-ai · daily-content",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": { "interval": [{ "field": "cronExpression", "expression": "0 9 * * *" }] }
+      },
+      "id": "cron-daily",
+      "name": "Every day 09:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": { "method": "POST", "url": "http://pipeline:3000/discover", "options": { "timeout": 120000 } },
+      "id": "http-discover",
+      "name": "POST /discover",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": { "method": "POST", "url": "http://pipeline:3000/match", "options": { "timeout": 300000 } },
+      "id": "http-match",
+      "name": "POST /match",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": { "method": "POST", "url": "http://pipeline:3000/generate", "options": { "timeout": 600000 } },
+      "id": "http-generate",
+      "name": "POST /generate (top-N)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 300]
+    },
+    {
+      "parameters": { "method": "POST", "url": "http://pipeline:3000/publish", "options": { "timeout": 120000 } },
+      "id": "http-publish",
+      "name": "POST /publish",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1120, 300]
+    }
+  ],
+  "connections": {
+    "Every day 09:00": { "main": [[{ "node": "POST /discover", "type": "main", "index": 0 }]] },
+    "POST /discover": { "main": [[{ "node": "POST /match", "type": "main", "index": 0 }]] },
+    "POST /match": { "main": [[{ "node": "POST /generate (top-N)", "type": "main", "index": 0 }]] },
+    "POST /generate (top-N)": { "main": [[{ "node": "POST /publish", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1", "errorWorkflow": "blog-ai · error-handler" },
+  "active": false
+}

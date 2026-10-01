@@ -1,0 +1,40 @@
+# blog-ai — pipeline service (and optional n8n).
+# Your n8n already runs elsewhere (n8ntestsrb.duckdns.org); point its HTTP nodes
+# at this pipeline. If you'd rather run n8n here too, use: docker compose --profile n8n up
+services:
+  pipeline:
+    build:
+      context: .
+      dockerfile: pipeline/Dockerfile
+    container_name: blog-ai-pipeline
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - DATABASE_PATH=/data/blog.db
+      - NODE_ENV=production
+    volumes:
+      - ./db:/data
+    ports:
+      - "3000:3000"
+
+  # Optional: run n8n alongside the pipeline on the same Docker network,
+  # so workflows can call http://pipeline:3000 directly.
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: blog-ai-n8n
+    profiles: ["n8n"]
+    restart: unless-stopped
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - WEBHOOK_URL=http://localhost:5678/
+      - GENERIC_TIMEZONE=UTC
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    depends_on:
+      - pipeline
+
+volumes:
+  n8n_data:

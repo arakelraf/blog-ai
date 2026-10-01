@@ -51,4 +51,10 @@ export async function weeklyReport(ctx: AppContext): Promise<WeeklyReport> {
 
 export function registerReport(app: FastifyInstance, ctx: AppContext): void {
   app.post("/report/weekly", async () => weeklyReport(ctx));
+  // Generic notifier for the n8n error branch (Error Trigger -> POST /notify).
+  app.post<{ Body: { text?: string } }>("/notify", async (req) => {
+    const text = req.body?.text ?? "⚠️ Pipeline error (no detail)";
+    await ctx.telegram.notify(text.slice(0, 3500));
+    return { ok: true };
+  });
 }

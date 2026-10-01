@@ -1,0 +1,33 @@
+{
+  "name": "blog-ai · error-handler",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "err-trigger",
+      "name": "On workflow error",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://pipeline:3000/notify",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { \"text\": '🚨 n8n error in \"' + $json.workflow.name + '\" at node \"' + ($json.execution.lastNodeExecuted || '?') + '\": ' + (($json.execution.error && $json.execution.error.message) || 'unknown') } }}",
+        "options": { "timeout": 30000 }
+      },
+      "id": "notify",
+      "name": "Notify pipeline → Telegram",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    }
+  ],
+  "connections": {
+    "On workflow error": { "main": [[{ "node": "Notify pipeline → Telegram", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "active": false
+}

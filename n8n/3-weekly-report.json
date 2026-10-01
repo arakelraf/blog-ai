@@ -1,0 +1,37 @@
+{
+  "name": "blog-ai · weekly-report",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": { "interval": [{ "field": "cronExpression", "expression": "0 9 * * 1" }] }
+      },
+      "id": "cron-weekly",
+      "name": "Mondays 09:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": { "method": "POST", "url": "http://pipeline:3000/gsc/ingest", "options": { "timeout": 120000 } },
+      "id": "http-gsc",
+      "name": "POST /gsc/ingest",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": { "method": "POST", "url": "http://pipeline:3000/report/weekly", "options": { "timeout": 120000 } },
+      "id": "http-report",
+      "name": "POST /report/weekly",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 300]
+    }
+  ],
+  "connections": {
+    "Mondays 09:00": { "main": [[{ "node": "POST /gsc/ingest", "type": "main", "index": 0 }]] },
+    "POST /gsc/ingest": { "main": [[{ "node": "POST /report/weekly", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1", "errorWorkflow": "blog-ai · error-handler" },
+  "active": false
+}

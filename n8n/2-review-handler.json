@@ -1,0 +1,59 @@
+{
+  "name": "blog-ai · review-handler",
+  "nodes": [
+    {
+      "parameters": { "updates": ["callback_query"], "additionalFields": {} },
+      "id": "tg-trigger",
+      "name": "Telegram button pressed",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300],
+      "credentials": { "telegramApi": { "id": "REPLACE_TELEGRAM_CRED", "name": "Telegram account" } }
+    },
+    {
+      "parameters": {
+        "jsCode": "const cb = $input.first().json.callback_query || {};\nconst raw = cb.data || '';\nconst idx = raw.indexOf(':');\nconst actionMap = { pub: 'publish', rej: 'reject', regen: 'regenerate' };\nconst shortAction = idx === -1 ? raw : raw.slice(0, idx);\nconst slug = idx === -1 ? '' : raw.slice(idx + 1);\nreturn [{ json: {\n  action: actionMap[shortAction] || shortAction,\n  slug,\n  callbackQueryId: cb.id,\n  chatId: cb.message && cb.message.chat ? cb.message.chat.id : null\n} }];"
+      },
+      "id": "parse",
+      "name": "Parse callback_data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://pipeline:3000/review",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { \"action\": $json.action, \"slug\": $json.slug } }}",
+        "options": { "timeout": 600000 }
+      },
+      "id": "http-review",
+      "name": "POST /review",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Parse callback_data').item.json.chatId }}",
+        "text": "={{ 'Done: ' + $('Parse callback_data').item.json.action + ' → ' + ($json.result || 'ok') }}",
+        "additionalFields": {}
+      },
+      "id": "tg-confirm",
+      "name": "Telegram confirm",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [900, 300],
+      "credentials": { "telegramApi": { "id": "REPLACE_TELEGRAM_CRED", "name": "Telegram account" } }
+    }
+  ],
+  "connections": {
+    "Telegram button pressed": { "main": [[{ "node": "Parse callback_data", "type": "main", "index": 0 }]] },
+    "Parse callback_data": { "main": [[{ "node": "POST /review", "type": "main", "index": 0 }]] },
+    "POST /review": { "main": [[{ "node": "Telegram confirm", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1", "errorWorkflow": "blog-ai · error-handler" },
+  "active": false
+}
