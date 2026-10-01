@@ -1,0 +1,200 @@
+{
+  "title": "AI Video Generator Pricing — Deals & Pricing (2026)",
+  "metaTitle": "AI Video Generator Pricing — Deals & Pricing (2026)",
+  "metaDescription": "We tested 3 ai video tools and ranked them by what actually ships. Honest picks, real pricing, no fluff.",
+  "year": 2026,
+  "promise": "3 tools, tested on real work.",
+  "lead": "We put 3 ai video tools through the same tasks and tracked what held up. Here's what earns the subscription — and what to skip.",
+  "category": "AI Video",
+  "categorySlug": "ai-video",
+  "pageType": "deal",
+  "author": "Stacked Editorial",
+  "authorSlug": "editorial",
+  "publishDate": "2026-10-01",
+  "demo": true,
+  "quickPick": {
+    "overall": "motionforge",
+    "budget": "clipmancer",
+    "premium": "vidify"
+  },
+  "products": [
+    {
+      "id": "motionforge",
+      "name": "MotionForge",
+      "role": "top_pick",
+      "rating": 4.5,
+      "tagline": "Our top pick overall",
+      "forWho": "Teams and solo users who want MotionForge to pull its weight without a steep learning curve.",
+      "keyFeatures": [
+        "Broadcast quality",
+        "Team seats"
+      ],
+      "pros": [
+        "Broadcast quality",
+        "Team seats"
+      ],
+      "cons": [
+        "Heavy app"
+      ],
+      "pricing": [
+        {
+          "plan": "Starter",
+          "price": "$89/mo"
+        }
+      ],
+      "affiliateUrl": "https://example.com/go/motionforge",
+      "review": [
+        "MotionForge earned its spot through hands-on testing. What stood out: broadcast quality. It fits the ai video job without drama.",
+        "The catch: heavy app. Pricing starts at $89/mo."
+      ]
+    },
+    {
+      "id": "clipmancer",
+      "name": "ClipMancer",
+      "role": "budget",
+      "rating": 4,
+      "tagline": "Best value for the money",
+      "forWho": "Teams and solo users who want ClipMancer to pull its weight without a steep learning curve.",
+      "keyFeatures": [
+        "Free tier",
+        "Simple editor"
+      ],
+      "pros": [
+        "Free tier",
+        "Simple editor"
+      ],
+      "cons": [
+        "Limited exports"
+      ],
+      "pricing": [
+        {
+          "plan": "Starter",
+          "price": "$0"
+        }
+      ],
+      "affiliateUrl": "https://example.com/go/clipmancer",
+      "review": [
+        "ClipMancer earned its spot through hands-on testing. What stood out: free tier. It fits the ai video job without drama.",
+        "The catch: limited exports. Pricing starts at $0."
+      ]
+    },
+    {
+      "id": "vidify",
+      "name": "Vidify",
+      "role": "premium",
+      "rating": 4.3,
+      "tagline": "Best for demanding teams",
+      "forWho": "Teams and solo users who want Vidify to pull its weight without a steep learning curve.",
+      "keyFeatures": [
+        "Fast avatars",
+        "Many voices"
+      ],
+      "pros": [
+        "Fast avatars",
+        "Many voices"
+      ],
+      "cons": [
+        "Watermark on free"
+      ],
+      "pricing": [
+        {
+          "plan": "Starter",
+          "price": "$24/mo"
+        }
+      ],
+      "affiliateUrl": "https://example.com/go/vidify",
+      "review": [
+        "Vidify earned its spot through hands-on testing. What stood out: fast avatars. It fits the ai video job without drama.",
+        "The catch: watermark on free. Pricing starts at $24/mo."
+      ]
+    }
+  ],
+  "comparison": {
+    "columns": [
+      "Best for",
+      "Starting price",
+      "Rating"
+    ],
+    "rows": [
+      {
+        "productId": "motionforge",
+        "values": [
+          "Most people",
+          "$89/mo",
+          "4.5"
+        ]
+      },
+      {
+        "productId": "clipmancer",
+        "values": [
+          "Tight budgets",
+          "$0",
+          "4"
+        ]
+      },
+      {
+        "productId": "vidify",
+        "values": [
+          "Teams",
+          "$24/mo",
+          "4.3"
+        ]
+      }
+    ]
+  },
+  "howToChoose": {
+    "intro": "Picking the right ai video tool comes down to a few practical questions, not benchmark scores.",
+    "criteria": [
+      {
+        "title": "Your volume",
+        "body": "Light use fits a free or cheap tier; heavy use justifies paying for speed and limits."
+      },
+      {
+        "title": "Your must-have",
+        "body": "Decide the one feature you can't live without and let it break the tie."
+      },
+      {
+        "title": "Budget vs time",
+        "body": "A pricier tool that saves hours a week usually pays for itself quickly."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What is the best option for ai video generator pricing?",
+      "a": "The short version: it depends on how you work. MotionForge (from $89/mo) is the one we'd reach for here, just keep in mind heavy app."
+    },
+    {
+      "q": "Is there a free ai video generator pricing?",
+      "a": "Here's our honest take. ClipMancer (from $0) is the one we'd reach for here, just keep in mind limited exports."
+    },
+    {
+      "q": "How much does ai video generator pricing cost?",
+      "a": "In most cases, yes — with one caveat. Vidify (from $24/mo) is the one we'd reach for here, just keep in mind watermark on free."
+    },
+    {
+      "q": "Which ai video generator pricing is best for beginners?",
+      "a": "It mostly comes down to budget. MotionForge (from $89/mo) is the one we'd reach for here, just keep in mind heavy app."
+    },
+    {
+      "q": "What's the best ai video tool overall?",
+      "a": "In our testing, MotionForge is the strongest all-round pick for most people."
+    },
+    {
+      "q": "Is there a cheap or free option?",
+      "a": "ClipMancer is the most budget-friendly here, starting at $0."
+    },
+    {
+      "q": "How did you test these tools?",
+      "a": "We ran the same real tasks through each tool and compared the output, speed, and value — not vendor demos."
+    }
+  ],
+  "finalVerdict": {
+    "winnerId": "motionforge",
+    "body": [
+      "If you want one answer: MotionForge. It needed the least fiddling and delivered the most consistent results in our tests.",
+      "On a budget, start with the value pick. For teams, the premium option is worth it. Match the tool to how you actually work."
+    ]
+  },
+  "related": []
+}

@@ -1,0 +1,200 @@
+{
+  "title": "AI Website Builder Alternatives (2026)",
+  "metaTitle": "AI Website Builder Alternatives (2026)",
+  "metaDescription": "We tested 3 ai website builders tools and ranked them by what actually ships. Honest picks, real pricing, no fluff.",
+  "year": 2026,
+  "promise": "3 tools, tested on real work.",
+  "lead": "We put 3 ai website builders tools through the same tasks and tracked what held up. Here's what earns the subscription — and what to skip.",
+  "category": "AI Website Builders",
+  "categorySlug": "ai-website-builders",
+  "pageType": "alternatives",
+  "author": "Stacked Editorial",
+  "authorSlug": "editorial",
+  "publishDate": "2026-10-01",
+  "demo": true,
+  "quickPick": {
+    "overall": "pagepilot",
+    "budget": "buildbot",
+    "premium": "sitesmith"
+  },
+  "products": [
+    {
+      "id": "pagepilot",
+      "name": "PagePilot",
+      "role": "top_pick",
+      "rating": 4.4,
+      "tagline": "Our top pick overall",
+      "forWho": "Teams and solo users who want PagePilot to pull its weight without a steep learning curve.",
+      "keyFeatures": [
+        "Great design output",
+        "SEO built-in"
+      ],
+      "pros": [
+        "Great design output",
+        "SEO built-in"
+      ],
+      "cons": [
+        "No code export"
+      ],
+      "pricing": [
+        {
+          "plan": "Starter",
+          "price": "$39/mo"
+        }
+      ],
+      "affiliateUrl": "https://example.com/go/pagepilot",
+      "review": [
+        "PagePilot earned its spot through hands-on testing. What stood out: great design output. It fits the ai website builders job without drama.",
+        "The catch: no code export. Pricing starts at $39/mo."
+      ]
+    },
+    {
+      "id": "buildbot",
+      "name": "BuildBot",
+      "role": "budget",
+      "rating": 4.1,
+      "tagline": "Best value for the money",
+      "forWho": "Teams and solo users who want BuildBot to pull its weight without a steep learning curve.",
+      "keyFeatures": [
+        "Free plan",
+        "Drag & drop"
+      ],
+      "pros": [
+        "Free plan",
+        "Drag & drop"
+      ],
+      "cons": [
+        "Ads on free"
+      ],
+      "pricing": [
+        {
+          "plan": "Starter",
+          "price": "$0"
+        }
+      ],
+      "affiliateUrl": "https://example.com/go/buildbot",
+      "review": [
+        "BuildBot earned its spot through hands-on testing. What stood out: free plan. It fits the ai website builders job without drama.",
+        "The catch: ads on free. Pricing starts at $0."
+      ]
+    },
+    {
+      "id": "sitesmith",
+      "name": "SiteSmith",
+      "role": "premium",
+      "rating": 4.2,
+      "tagline": "Best for demanding teams",
+      "forWho": "Teams and solo users who want SiteSmith to pull its weight without a steep learning curve.",
+      "keyFeatures": [
+        "Prompt-to-site",
+        "Cheap hosting"
+      ],
+      "pros": [
+        "Prompt-to-site",
+        "Cheap hosting"
+      ],
+      "cons": [
+        "Few templates"
+      ],
+      "pricing": [
+        {
+          "plan": "Starter",
+          "price": "$12/mo"
+        }
+      ],
+      "affiliateUrl": "https://example.com/go/sitesmith",
+      "review": [
+        "SiteSmith earned its spot through hands-on testing. What stood out: prompt-to-site. It fits the ai website builders job without drama.",
+        "The catch: few templates. Pricing starts at $12/mo."
+      ]
+    }
+  ],
+  "comparison": {
+    "columns": [
+      "Best for",
+      "Starting price",
+      "Rating"
+    ],
+    "rows": [
+      {
+        "productId": "pagepilot",
+        "values": [
+          "Most people",
+          "$39/mo",
+          "4.4"
+        ]
+      },
+      {
+        "productId": "buildbot",
+        "values": [
+          "Tight budgets",
+          "$0",
+          "4.1"
+        ]
+      },
+      {
+        "productId": "sitesmith",
+        "values": [
+          "Teams",
+          "$12/mo",
+          "4.2"
+        ]
+      }
+    ]
+  },
+  "howToChoose": {
+    "intro": "Picking the right ai website builders tool comes down to a few practical questions, not benchmark scores.",
+    "criteria": [
+      {
+        "title": "Your volume",
+        "body": "Light use fits a free or cheap tier; heavy use justifies paying for speed and limits."
+      },
+      {
+        "title": "Your must-have",
+        "body": "Decide the one feature you can't live without and let it break the tie."
+      },
+      {
+        "title": "Budget vs time",
+        "body": "A pricier tool that saves hours a week usually pays for itself quickly."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What is the best option for ai website builder alternatives?",
+      "a": "The short version: it depends on how you work. PagePilot (from $39/mo) is the one we'd reach for here, just keep in mind no code export."
+    },
+    {
+      "q": "Is there a free ai website builder alternatives?",
+      "a": "Here's our honest take. BuildBot (from $0) is the one we'd reach for here, just keep in mind ads on free."
+    },
+    {
+      "q": "How much does ai website builder alternatives cost?",
+      "a": "In most cases, yes — with one caveat. SiteSmith (from $12/mo) is the one we'd reach for here, just keep in mind few templates."
+    },
+    {
+      "q": "Which ai website builder alternatives is best for beginners?",
+      "a": "It mostly comes down to budget. PagePilot (from $39/mo) is the one we'd reach for here, just keep in mind no code export."
+    },
+    {
+      "q": "What's the best ai website builders tool overall?",
+      "a": "In our testing, PagePilot is the strongest all-round pick for most people."
+    },
+    {
+      "q": "Is there a cheap or free option?",
+      "a": "BuildBot is the most budget-friendly here, starting at $0."
+    },
+    {
+      "q": "How did you test these tools?",
+      "a": "We ran the same real tasks through each tool and compared the output, speed, and value — not vendor demos."
+    }
+  ],
+  "finalVerdict": {
+    "winnerId": "pagepilot",
+    "body": [
+      "If you want one answer: PagePilot. It needed the least fiddling and delivered the most consistent results in our tests.",
+      "On a budget, start with the value pick. For teams, the premium option is worth it. Match the tool to how you actually work."
+    ]
+  },
+  "related": []
+}

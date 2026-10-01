@@ -1,0 +1,200 @@
+{
+  "title": "Cheapest AI SEO Tools — Deals & Pricing (2026)",
+  "metaTitle": "Cheapest AI SEO Tools — Deals & Pricing (2026)",
+  "metaDescription": "We tested 3 ai seo tools and ranked them by what actually ships. Honest picks, real pricing, no fluff.",
+  "year": 2026,
+  "promise": "3 tools, tested on real work.",
+  "lead": "We put 3 ai seo tools through the same tasks and tracked what held up. Here's what earns the subscription — and what to skip.",
+  "category": "AI SEO",
+  "categorySlug": "ai-seo",
+  "pageType": "deal",
+  "author": "Stacked Editorial",
+  "authorSlug": "editorial",
+  "publishDate": "2026-10-01",
+  "demo": true,
+  "quickPick": {
+    "overall": "ranklens",
+    "budget": "keywordnova",
+    "premium": "surgeseo"
+  },
+  "products": [
+    {
+      "id": "ranklens",
+      "name": "RankLens",
+      "role": "top_pick",
+      "rating": 4.6,
+      "tagline": "Our top pick overall",
+      "forWho": "Teams and solo users who want RankLens to pull its weight without a steep learning curve.",
+      "keyFeatures": [
+        "Great SERP briefs",
+        "Clear scoring"
+      ],
+      "pros": [
+        "Great SERP briefs",
+        "Clear scoring"
+      ],
+      "cons": [
+        "Steep learning curve"
+      ],
+      "pricing": [
+        {
+          "plan": "Starter",
+          "price": "$49/mo"
+        }
+      ],
+      "affiliateUrl": "https://example.com/go/ranklens",
+      "review": [
+        "RankLens earned its spot through hands-on testing. What stood out: great serp briefs. It fits the ai seo job without drama.",
+        "The catch: steep learning curve. Pricing starts at $49/mo."
+      ]
+    },
+    {
+      "id": "keywordnova",
+      "name": "KeywordNova",
+      "role": "budget",
+      "rating": 4.1,
+      "tagline": "Best value for the money",
+      "forWho": "Teams and solo users who want KeywordNova to pull its weight without a steep learning curve.",
+      "keyFeatures": [
+        "Cheap",
+        "Fast research"
+      ],
+      "pros": [
+        "Cheap",
+        "Fast research"
+      ],
+      "cons": [
+        "Thin on backlinks"
+      ],
+      "pricing": [
+        {
+          "plan": "Starter",
+          "price": "$19/mo"
+        }
+      ],
+      "affiliateUrl": "https://example.com/go/keywordnova",
+      "review": [
+        "KeywordNova earned its spot through hands-on testing. What stood out: cheap. It fits the ai seo job without drama.",
+        "The catch: thin on backlinks. Pricing starts at $19/mo."
+      ]
+    },
+    {
+      "id": "surgeseo",
+      "name": "SurgeSEO",
+      "role": "premium",
+      "rating": 4.4,
+      "tagline": "Best for demanding teams",
+      "forWho": "Teams and solo users who want SurgeSEO to pull its weight without a steep learning curve.",
+      "keyFeatures": [
+        "Enterprise reporting",
+        "API access"
+      ],
+      "pros": [
+        "Enterprise reporting",
+        "API access"
+      ],
+      "cons": [
+        "Pricey"
+      ],
+      "pricing": [
+        {
+          "plan": "Starter",
+          "price": "$129/mo"
+        }
+      ],
+      "affiliateUrl": "https://example.com/go/surgeseo",
+      "review": [
+        "SurgeSEO earned its spot through hands-on testing. What stood out: enterprise reporting. It fits the ai seo job without drama.",
+        "The catch: pricey. Pricing starts at $129/mo."
+      ]
+    }
+  ],
+  "comparison": {
+    "columns": [
+      "Best for",
+      "Starting price",
+      "Rating"
+    ],
+    "rows": [
+      {
+        "productId": "ranklens",
+        "values": [
+          "Most people",
+          "$49/mo",
+          "4.6"
+        ]
+      },
+      {
+        "productId": "keywordnova",
+        "values": [
+          "Tight budgets",
+          "$19/mo",
+          "4.1"
+        ]
+      },
+      {
+        "productId": "surgeseo",
+        "values": [
+          "Teams",
+          "$129/mo",
+          "4.4"
+        ]
+      }
+    ]
+  },
+  "howToChoose": {
+    "intro": "Picking the right ai seo tool comes down to a few practical questions, not benchmark scores.",
+    "criteria": [
+      {
+        "title": "Your volume",
+        "body": "Light use fits a free or cheap tier; heavy use justifies paying for speed and limits."
+      },
+      {
+        "title": "Your must-have",
+        "body": "Decide the one feature you can't live without and let it break the tie."
+      },
+      {
+        "title": "Budget vs time",
+        "body": "A pricier tool that saves hours a week usually pays for itself quickly."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What is the best option for cheapest ai seo tools?",
+      "a": "The short version: it depends on how you work. RankLens (from $49/mo) is the one we'd reach for here, just keep in mind steep learning curve."
+    },
+    {
+      "q": "Is there a free cheapest ai seo tools?",
+      "a": "Here's our honest take. KeywordNova (from $19/mo) is the one we'd reach for here, just keep in mind thin on backlinks."
+    },
+    {
+      "q": "How much does cheapest ai seo tools cost?",
+      "a": "In most cases, yes — with one caveat. SurgeSEO (from $129/mo) is the one we'd reach for here, just keep in mind pricey."
+    },
+    {
+      "q": "Which cheapest ai seo tools is best for beginners?",
+      "a": "It mostly comes down to budget. RankLens (from $49/mo) is the one we'd reach for here, just keep in mind steep learning curve."
+    },
+    {
+      "q": "What's the best ai seo tool overall?",
+      "a": "In our testing, RankLens is the strongest all-round pick for most people."
+    },
+    {
+      "q": "Is there a cheap or free option?",
+      "a": "KeywordNova is the most budget-friendly here, starting at $19/mo."
+    },
+    {
+      "q": "How did you test these tools?",
+      "a": "We ran the same real tasks through each tool and compared the output, speed, and value — not vendor demos."
+    }
+  ],
+  "finalVerdict": {
+    "winnerId": "ranklens",
+    "body": [
+      "If you want one answer: RankLens. It needed the least fiddling and delivered the most consistent results in our tests.",
+      "On a budget, start with the value pick. For teams, the premium option is worth it. Match the tool to how you actually work."
+    ]
+  },
+  "related": []
+}
