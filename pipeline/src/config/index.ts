@@ -67,6 +67,10 @@ const envSchema = z.object({
   SITE_URL: z.string().default("https://example.com"),
   INDEXNOW_KEY: z.string().optional(),
 
+  // Google Search Console (optional; n8n can also feed /gsc/ingest directly).
+  GSC_SITE_URL: z.string().optional(),
+  GSC_ACCESS_TOKEN: z.string().optional(),
+
   ADMIN_USER: z.string().default("admin"),
   ADMIN_PASSWORD: z.string().default("changeme"),
 
@@ -89,5 +93,6 @@ export function serviceMode(env: Env) {
     telegram: !mock && !!env.TELEGRAM_BOT_TOKEN && !!env.TELEGRAM_CHAT_ID,
     github: !mock && !!env.GITHUB_TOKEN,
     indexnow: !mock && !!env.INDEXNOW_KEY,
+    gsc: !mock && !!env.GSC_ACCESS_TOKEN && !!env.GSC_SITE_URL,
   };
 }

@@ -5,6 +5,9 @@ import { registerDiscover } from "./routes/discover.js";
 import { registerMatch } from "./routes/match.js";
 import { registerGenerate } from "./routes/generate.js";
 import { registerPublish } from "./routes/publish.js";
+import { registerTrack } from "./routes/track.js";
+import { registerReport } from "./routes/report.js";
+import { registerRefresh } from "./routes/refresh.js";
 import { registerAdmin } from "./routes/admin.js";
 import { logger } from "./lib/logger.js";
 import { spendToday } from "./lib/runs.js";
@@ -31,6 +34,9 @@ async function main(): Promise<void> {
   registerMatch(app, ctx);
   registerGenerate(app, ctx);
   registerPublish(app, ctx);
+  registerTrack(app, ctx);
+  registerReport(app, ctx);
+  registerRefresh(app, ctx);
   await registerAdmin(app, ctx);
 
   const port = ctx.env.PORT;

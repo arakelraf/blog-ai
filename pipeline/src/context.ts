@@ -5,6 +5,7 @@ import { DataForSeoService } from "./services/dataforseo.js";
 import { TelegramService } from "./services/telegram.js";
 import { GitHubService } from "./services/github.js";
 import { IndexNowService } from "./services/indexnow.js";
+import { GscService } from "./services/gsc.js";
 
 export interface AppContext {
   env: Env;
@@ -15,6 +16,7 @@ export interface AppContext {
   telegram: TelegramService;
   github: GitHubService;
   indexnow: IndexNowService;
+  gsc: GscService;
 }
 
 export function buildContext(): AppContext {
@@ -31,5 +33,6 @@ export function buildContext(): AppContext {
     telegram: new TelegramService(env, modes.telegram),
     github: new GitHubService(env, modes.github, contentDir),
     indexnow: new IndexNowService(env, modes.indexnow),
+    gsc: new GscService(env, modes.gsc),
   };
 }
