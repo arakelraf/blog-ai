@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Search · Stacked</title><meta name="description" content="Search reviews and comparisons."><link rel="canonical" href="https://example.com/search/"><link rel="sitemap" href="/blog-ai/sitemap.xml"><meta property="og:type" content="website"><meta property="og:site_name" content="Stacked"><meta property="og:title" content="Search"><meta property="og:description" content="Search reviews and comparisons."><meta property="og:url" content="https://example.com/search/"><meta property="og:image" content="https://example.com/og-default.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Search"><meta name="twitter:description" content="Search reviews and comparisons."><meta name="twitter:image" content="https://example.com/og-default.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"><!-- No-flash theme: run before paint --><script>
+      try {
+        const t = localStorage.getItem("theme");
+        if (t) document.documentElement.setAttribute("data-theme", t);
+      } catch {}
+    </script><link rel="stylesheet" href="/blog-ai/_astro/about.AK0eK6TH.css"></head> <body class="min-h-screen flex flex-col antialiased"> <header class="sticky top-0 z-30 border-b border-border bg-bg/85 backdrop-blur"> <div class="container-wide flex h-16 items-center justify-between gap-4"> <a href="/blog-ai/" class="flex items-center gap-2 font-display text-xl font-bold tracking-tight"> <span class="grid h-7 w-7 place-items-center rounded-lg bg-brand text-brand-ink">S</span> Stacked </a> <nav class="hidden items-center gap-6 text-sm font-medium md:flex"> <a href="/blog-ai/categories/ai-writing" class="text-muted transition-colors hover:text-ink">AI Writing</a><a href="/blog-ai/categories/ai-website-builders" class="text-muted transition-colors hover:text-ink">AI Website Builders</a><a href="/blog-ai/categories/ai-seo" class="text-muted transition-colors hover:text-ink">AI SEO</a><a href="/blog-ai/categories/ai-image" class="text-muted transition-colors hover:text-ink">AI Image</a><a href="/blog-ai/categories/ai-video" class="text-muted transition-colors hover:text-ink">AI Video</a> </nav> <div class="flex items-center gap-2"> <form action="/blog-ai/search/" role="search" class="hidden items-center sm:flex"> <label class="relative"> <svg class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3" stroke-linecap="round"></path></svg> <input name="q" type="search" placeholder="Search" aria-label="Search reviews" class="w-40 rounded-full border border-border bg-surface py-1.5 pl-9 pr-3 text-sm outline-none transition-[width,border] focus:w-56 focus:border-brand"> </label> </form> <a href="/blog-ai/search/" aria-label="Search" class="grid h-9 w-9 place-items-center rounded-full border border-border bg-surface text-ink hover:border-brand hover:text-brand sm:hidden"> <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3" stroke-linecap="round"></path></svg> </a> <a href="/blog-ai/how-we-test" class="hidden text-sm font-medium text-muted hover:text-ink md:inline">How we test</a> <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="grid h-9 w-9 place-items-center rounded-full border border-border bg-surface text-ink transition-colors hover:border-brand hover:text-brand"> <svg class="hidden h-4 w-4 dark:block" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path></svg> <svg class="block h-4 w-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" stroke-linecap="round"></path></svg> </button> <script>
+  (() => {
+    const key = "theme";
+    const btn = document.getElementById("theme-toggle");
+    const apply = (t) => document.documentElement.setAttribute("data-theme", t);
+    btn?.addEventListener("click", () => {
+      const cur = document.documentElement.getAttribute("data-theme");
+      const sysDark = matchMedia("(prefers-color-scheme: dark)").matches;
+      const effective = cur ?? (sysDark ? "dark" : "light");
+      const next = effective === "dark" ? "light" : "dark";
+      apply(next);
+      try { localStorage.setItem(key, next); } catch {}
+    });
+  })();
+</script> </div> </div> </header> <main class="flex-1"> <div class="container-wide py-10"> <nav aria-label="Breadcrumb" class="text-sm text-muted"> <ol class="flex flex-wrap items-center gap-1.5"> <li class="flex items-center gap-1.5"> <a href="/blog-ai/" class="hover:text-brand">Home</a> <span aria-hidden="true" class="text-border">/</span> </li><li class="flex items-center gap-1.5"> <span class="text-ink">Search</span>  </li> </ol> </nav> <h1 class="mt-4 text-4xl font-bold sm:text-5xl">Search</h1> <p class="mt-3 max-w-2xl prose-lead">Find a review, comparison or tool by name.</p> <div class="relative mt-8 max-w-xl"> <svg class="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3" stroke-linecap="round"></path></svg> <input id="q" type="search" autocomplete="off" placeholder="Try “AI writing”, “SEO”, or a tool name…" class="w-full rounded-full border border-border bg-surface py-3.5 pl-12 pr-4 text-base shadow-card outline-none transition-colors focus:border-brand"> </div> <p id="count" class="mt-6 text-sm text-muted"></p> <div id="results" class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div> <p id="empty" class="mt-4 hidden text-muted">No matches. Try a broader term.</p> </div> <script>
+    (() => {
+      // Base-aware: works at root locally and under /blog-ai/ on GitHub Pages.
+      const base = location.pathname.replace(/\/search(\/index\.html)?\/?$/, "") || "";
+      const input = document.getElementById("q");
+      const results = document.getElementById("results");
+      const count = document.getElementById("count");
+      const empty = document.getElementById("empty");
+      let data = [];
+
+      const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+      function card(item) {
+        return `<a href="${base}/blog/${item.slug}" class="card group flex flex-col gap-2 p-5 transition-all hover:-translate-y-1 hover:shadow-pop">
+          <span class="text-xs font-semibold uppercase tracking-wide text-brand">${esc(item.category)}</span>
+          <h3 class="text-lg font-semibold leading-snug group-hover:text-brand">${esc(item.title)}</h3>
+          <p class="line-clamp-2 text-sm text-muted">${esc(item.description)}</p>
+        </a>`;
+      }
+
+      function render(q) {
+        const query = q.trim().toLowerCase();
+        let matches = data;
+        if (query) {
+          const terms = query.split(/\s+/);
+          matches = data
+            .map((item) => {
+              let score = 0;
+              for (const t of terms) {
+                if (!item.haystack.includes(t)) return null;
+                if (item.title.toLowerCase().includes(t)) score += 3;
+                else if (item.category.toLowerCase().includes(t)) score += 2;
+                else score += 1;
+              }
+              return { item, score };
+            })
+            .filter(Boolean)
+            .sort((a, b) => b.score - a.score)
+            .map((x) => x.item);
+        }
+        results.innerHTML = matches.map(card).join("");
+        empty.classList.toggle("hidden", matches.length > 0);
+        count.textContent = query
+          ? `${matches.length} result${matches.length === 1 ? "" : "s"} for “${q.trim()}”`
+          : `${data.length} reviews`;
+      }
+
+      fetch(`${base}/search-index.json`)
+        .then((r) => r.json())
+        .then((json) => {
+          data = json;
+          const params = new URLSearchParams(location.search);
+          const q = params.get("q") || "";
+          input.value = q;
+          render(q);
+          input.focus();
+        })
+        .catch(() => {
+          count.textContent = "Search is unavailable right now.";
+        });
+
+      let t;
+      input.addEventListener("input", () => {
+        clearTimeout(t);
+        t = setTimeout(() => {
+          render(input.value);
+          const u = new URL(location.href);
+          input.value ? u.searchParams.set("q", input.value) : u.searchParams.delete("q");
+          history.replaceState(null, "", u);
+        }, 120);
+      });
+    })();
+  </script> </main> <footer class="mt-20 border-t border-border bg-surface-2/40"> <div class="container-wide grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4"> <div> <p class="mb-2 font-display text-lg font-bold">Stacked</p> <p class="max-w-xs text-sm text-muted">Independent reviews of the AI tools worth paying for.</p> </div> <div> <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-muted">Categories</p> <ul class="flex flex-col gap-2 text-sm"> <li><a href="/blog-ai/categories/ai-writing" class="text-muted hover:text-ink">AI Writing</a></li><li><a href="/blog-ai/categories/ai-website-builders" class="text-muted hover:text-ink">AI Website Builders</a></li><li><a href="/blog-ai/categories/ai-seo" class="text-muted hover:text-ink">AI SEO</a></li><li><a href="/blog-ai/categories/ai-image" class="text-muted hover:text-ink">AI Image</a></li><li><a href="/blog-ai/categories/ai-video" class="text-muted hover:text-ink">AI Video</a></li><li><a href="/blog-ai/categories/ai-chatbots" class="text-muted hover:text-ink">AI Chatbots</a></li> </ul> </div> <div> <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-muted">Company</p> <ul class="flex flex-col gap-2 text-sm"> <li><a href="/blog-ai/about" class="text-muted hover:text-ink">About</a></li> <li><a href="/blog-ai/how-we-test" class="text-muted hover:text-ink">How we test</a></li> <li><a href="/blog-ai/disclosure" class="text-muted hover:text-ink">Affiliate disclosure</a></li> <li><a href="/blog-ai/privacy" class="text-muted hover:text-ink">Privacy</a></li> </ul> </div> <div> <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-muted">Trust</p> <p class="text-sm text-muted">Independently funded. We buy the tools we review and may earn affiliate commissions. Rankings are never for sale.</p> </div> </div> <div class="container-wide border-t border-border py-6 text-xs text-muted">
+© 2026 Stacked. All reviews reflect hands-on testing.
+</div> </footer> </body></html>
