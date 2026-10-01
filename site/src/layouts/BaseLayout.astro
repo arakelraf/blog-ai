@@ -1,0 +1,109 @@
+---
+import "../styles/tokens.css";
+import "../styles/global.css";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import { site, categories } from "../lib/site";
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  jsonLd?: unknown;
+}
+const { title, description = site.description, canonical = Astro.url.pathname, image, jsonLd } = Astro.props;
+const canonicalUrl = new URL(canonical, site.url).toString();
+const ogImage = new URL(image ?? "/og-default.svg", site.url).toString();
+const fullTitle = title === site.name ? title : `${title} · ${site.name}`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" href="/sitemap.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+    />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <!-- No-flash theme: run before paint -->
+    <script is:inline>
+      try {
+        const t = localStorage.getItem("theme");
+        if (t) document.documentElement.setAttribute("data-theme", t);
+      } catch {}
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col antialiased">
+    <header class="sticky top-0 z-30 border-b border-border bg-bg/85 backdrop-blur">
+      <div class="container-wide flex h-16 items-center justify-between gap-4">
+        <a href="/" class="flex items-center gap-2 font-display text-xl font-bold tracking-tight">
+          <span class="grid h-7 w-7 place-items-center rounded-lg bg-brand text-brand-ink">S</span>
+          {site.name}
+        </a>
+        <nav class="hidden items-center gap-6 text-sm font-medium md:flex">
+          {Object.entries(categories).slice(0, 5).map(([slug, c]) => (
+            <a href={`/categories/${slug}`} class="text-muted transition-colors hover:text-ink">{c.title}</a>
+          ))}
+        </nav>
+        <div class="flex items-center gap-2">
+          <a href="/how-we-test" class="hidden text-sm font-medium text-muted hover:text-ink sm:inline">How we test</a>
+          <ThemeToggle />
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1"><slot /></main>
+
+    <footer class="mt-20 border-t border-border bg-surface-2/40">
+      <div class="container-wide grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <p class="mb-2 font-display text-lg font-bold">{site.name}</p>
+          <p class="max-w-xs text-sm text-muted">{site.tagline}</p>
+        </div>
+        <div>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-muted">Categories</p>
+          <ul class="flex flex-col gap-2 text-sm">
+            {Object.entries(categories).map(([slug, c]) => (
+              <li><a href={`/categories/${slug}`} class="text-muted hover:text-ink">{c.title}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-muted">Company</p>
+          <ul class="flex flex-col gap-2 text-sm">
+            <li><a href="/about" class="text-muted hover:text-ink">About</a></li>
+            <li><a href="/how-we-test" class="text-muted hover:text-ink">How we test</a></li>
+            <li><a href="/disclosure" class="text-muted hover:text-ink">Affiliate disclosure</a></li>
+            <li><a href="/privacy" class="text-muted hover:text-ink">Privacy</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-muted">Trust</p>
+          <p class="text-sm text-muted">Independently funded. We buy the tools we review and may earn affiliate commissions. Rankings are never for sale.</p>
+        </div>
+      </div>
+      <div class="container-wide border-t border-border py-6 text-xs text-muted">
+        © {new Date().getFullYear()} {site.name}. All reviews reflect hands-on testing.
+      </div>
+    </footer>
+  </body>
+</html>

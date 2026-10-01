@@ -1,0 +1,12 @@
+---
+interface Props { role: string; }
+const { role } = Astro.props;
+const map: Record<string, { label: string; cls: string }> = {
+  top_pick: { label: "★ Best overall", cls: "bg-brand/12 text-brand" },
+  budget: { label: "Best value", cls: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400" },
+  premium: { label: "Best premium", cls: "bg-gold/15 text-gold" },
+  alternative: { label: "Also great", cls: "bg-surface-2 text-muted" },
+};
+const b = map[role] ?? map.alternative;
+---
+<span class={`badge ${b.cls}`}>{b.label}</span>

@@ -1,0 +1,12 @@
+---
+import ArticleCard from "./ArticleCard.astro";
+interface Props { articles: any[]; }
+const { articles } = Astro.props;
+if (!articles.length) return;
+---
+<section aria-label="Related reading" class="not-prose">
+  <h2 class="mb-4 text-2xl font-semibold sm:text-3xl">Keep reading</h2>
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {articles.map((a) => <ArticleCard article={a.data} />)}
+  </div>
+</section>

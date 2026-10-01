@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../lib/site";
+---
+<BaseLayout title="About" description={`About ${site.name}`}>
+  <div class="container-prose py-12">
+    <h1 class="text-4xl font-bold sm:text-5xl">About {site.name}</h1>
+    <div class="rich mt-6 text-base">
+      <p>{site.name} is an independent review site covering the fast-moving world of AI software. We help people and small teams pick tools that are worth the subscription — and skip the ones that aren't.</p>
+      <p>We're reader-funded through affiliate commissions. That means when a recommendation leads to a purchase, we may earn a cut at no cost to you. It never buys a better ranking: our <a href="/how-we-test" class="underline hover:text-brand">testing process</a> decides placement, full stop.</p>
+      <p>Questions, corrections or a tool we should test? We read everything.</p>
+    </div>
+  </div>
+</BaseLayout>

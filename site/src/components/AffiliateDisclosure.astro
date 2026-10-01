@@ -1,0 +1,15 @@
+---
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
+---
+<aside class={`flex items-start gap-2.5 rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-muted ${compact ? "" : "mt-2"}`}>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="mt-0.5 shrink-0 text-brand">
+    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+    <path d="M12 8h.01M11 12h1v4h1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+  <p>
+    <strong class="font-semibold text-ink">Disclosure:</strong> Some links here are affiliate links. If you
+    buy through them we may earn a commission — at no extra cost to you. It never changes our rankings; we
+    only recommend tools we'd use ourselves. <a href="/disclosure" class="underline hover:text-brand">How this works</a>.
+  </p>
+</aside>

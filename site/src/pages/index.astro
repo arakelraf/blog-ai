@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import { site, categories } from "../lib/site";
+
+const all = (await getCollection("articles")).sort(
+  (a, b) => +new Date(b.data.publishDate) - +new Date(a.data.publishDate),
+);
+const latest = all.slice(0, 6);
+---
+<BaseLayout title={site.name} description={site.description}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden border-b border-border">
+    <div class="pointer-events-none absolute -right-32 -top-24 h-96 w-96 rounded-full bg-brand/15 blur-3xl"></div>
+    <div class="container-wide relative py-16 sm:py-24">
+      <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-semibold text-muted">
+        <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Independent · Hands-on tested
+      </p>
+      <h1 class="max-w-3xl text-4xl font-bold leading-[1.05] sm:text-6xl">
+        The AI tools worth paying for — <span class="text-brand">and the ones that aren't.</span>
+      </h1>
+      <p class="mt-6 max-w-xl prose-lead">{site.description}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        {Object.entries(categories).slice(0, 4).map(([slug, c]) => (
+          <a href={`/categories/${slug}`} class="btn-ghost">{c.title}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest reviews -->
+  <section class="container-wide py-14">
+    <div class="mb-6 flex items-end justify-between">
+      <h2 class="text-2xl font-semibold sm:text-3xl">Latest reviews</h2>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {latest.map((a) => <ArticleCard article={{ ...a.data, slug: a.id.replace(/\.json$/, "") }} />)}
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="container-wide py-6 pb-20">
+    <h2 class="mb-6 text-2xl font-semibold sm:text-3xl">Browse by category</h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {Object.entries(categories).map(([slug, c]) => (
+        <a href={`/categories/${slug}`} class="card group flex flex-col gap-1.5 p-6 transition-all hover:-translate-y-1 hover:shadow-pop">
+          <h3 class="text-lg font-semibold group-hover:text-brand">{c.title}</h3>
+          <p class="text-sm text-muted">{c.blurb}</p>
+          <span class="mt-2 text-sm font-semibold text-brand">Explore →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

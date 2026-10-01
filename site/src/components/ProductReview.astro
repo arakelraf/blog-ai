@@ -1,0 +1,68 @@
+---
+import Rating from "./Rating.astro";
+import RoleBadge from "./RoleBadge.astro";
+import Logo from "./Logo.astro";
+import CTAButton from "./CTAButton.astro";
+import { go } from "../lib/site";
+
+interface Props { product: any; slug: string; index: number; }
+const { product, slug, index } = Astro.props;
+---
+<article id={product.id} class="card scroll-mt-24 overflow-hidden">
+  <header class="flex flex-wrap items-start justify-between gap-4 border-b border-border bg-surface-2/50 p-5 sm:p-6">
+    <div class="flex items-center gap-4">
+      <span class="font-display text-2xl font-semibold text-muted tabular-nums">{String(index).padStart(2, "0")}</span>
+      <Logo name={product.name} size={48} />
+      <div>
+        <div class="mb-1 flex items-center gap-2">
+          <h3 class="text-xl font-semibold">{product.name}</h3>
+          <RoleBadge role={product.role} />
+        </div>
+        <Rating value={product.rating} />
+      </div>
+    </div>
+    <div class="flex flex-col items-end gap-1">
+      <CTAButton href={go(product.id, slug, "review")} label="Check price" />
+      {product.promoCode && <span class="text-xs text-muted">Code <span class="font-mono font-semibold text-ink">{product.promoCode}</span></span>}
+    </div>
+  </header>
+
+  <div class="grid gap-6 p-5 sm:p-6 lg:grid-cols-3">
+    <div class="lg:col-span-2">
+      <p class="mb-4 text-sm"><span class="font-semibold">Best for:</span> <span class="text-muted">{product.forWho}</span></p>
+      <div class="rich">{product.review.map((para: string) => <p set:html={para} />)}</div>
+    </div>
+
+    <aside class="flex flex-col gap-4">
+      <div class="rounded-xl border border-border bg-surface-2/40 p-4">
+        <h4 class="mb-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400">What we liked</h4>
+        <ul class="flex flex-col gap-1.5 text-sm">
+          {product.pros.map((pro: string) => (
+            <li class="flex gap-2"><span aria-hidden="true" class="text-emerald-500">+</span>{pro}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="rounded-xl border border-border bg-surface-2/40 p-4">
+        <h4 class="mb-2 text-sm font-semibold text-red-500">Where it falls short</h4>
+        <ul class="flex flex-col gap-1.5 text-sm">
+          {product.cons.map((con: string) => (
+            <li class="flex gap-2"><span aria-hidden="true" class="text-red-400">−</span>{con}</li>
+          ))}
+        </ul>
+      </div>
+      {product.pricing?.length > 0 && (
+        <div class="rounded-xl border border-border p-4">
+          <h4 class="mb-2 text-sm font-semibold">Pricing</h4>
+          <ul class="flex flex-col gap-1.5 text-sm">
+            {product.pricing.map((pr: any) => (
+              <li class="flex justify-between gap-3">
+                <span class="text-muted">{pr.plan}</span>
+                <span class="font-semibold">{pr.price}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </aside>
+  </div>
+</article>

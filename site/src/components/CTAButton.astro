@@ -1,0 +1,19 @@
+---
+interface Props {
+  href: string;
+  label?: string;
+  variant?: "cta" | "ghost";
+  small?: boolean;
+}
+const { href, label = "Check price", variant = "cta", small = false } = Astro.props;
+const cls = variant === "cta" ? "btn-cta" : "btn-ghost";
+---
+<a
+  href={href}
+  rel="sponsored nofollow"
+  target="_blank"
+  class={`${cls} ${small ? "px-4 py-2 text-xs" : ""}`}
+>
+  {label}
+  <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">→</span>
+</a>

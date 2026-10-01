@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--ink));
+    font-feature-settings: "ss01", "cv05";
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: rgb(var(--brand) / 0.22);
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+    text-wrap: balance;
+  }
+  a {
+    color: inherit;
+  }
+}
+
+@layer components {
+  .container-wide { @apply mx-auto w-full max-w-wide px-5 sm:px-6; }
+  .container-prose { @apply mx-auto w-full max-w-prose px-5 sm:px-6; }
+
+  /* CTA button — contrasty, large, with hover micro-animation */
+  .btn-cta {
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+           bg-cta px-5 py-3 text-sm font-semibold text-cta-ink
+           shadow-card transition-all duration-200
+           hover:-translate-y-0.5 hover:shadow-pop hover:brightness-105
+           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+           focus-visible:outline-cta active:translate-y-0;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-border
+           bg-surface px-4 py-2.5 text-sm font-semibold text-ink transition-colors
+           hover:border-brand hover:text-brand;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+  .card {
+    @apply rounded-xl2 border border-border bg-surface shadow-card;
+  }
+  .prose-lead {
+    @apply text-lg leading-relaxed text-muted sm:text-xl;
+  }
+}
+
+/* Editorial body copy for review paragraphs */
+.rich p { @apply my-4 leading-[1.75] text-ink/90; }
+.rich p:first-child { @apply mt-0; }
+.rich strong { @apply font-semibold text-ink; }

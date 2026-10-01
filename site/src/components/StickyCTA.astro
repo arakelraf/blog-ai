@@ -1,0 +1,20 @@
+---
+import { go } from "../lib/site";
+interface Props { product: any; slug: string; }
+const { product, slug } = Astro.props;
+---
+<div class="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface/95 p-3 backdrop-blur md:hidden">
+  <div class="flex items-center gap-3">
+    <div class="min-w-0 flex-1">
+      <p class="truncate text-xs text-muted">Our #1 pick</p>
+      <p class="truncate text-sm font-semibold">{product.name}</p>
+    </div>
+    <a
+      href={go(product.id, slug, "sticky")}
+      rel="sponsored nofollow"
+      target="_blank"
+      class="btn-cta shrink-0 px-5 py-2.5"
+    >Check price →</a>
+  </div>
+</div>
+<div class="h-16 md:hidden" aria-hidden="true"></div>

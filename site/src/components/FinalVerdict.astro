@@ -1,0 +1,23 @@
+---
+import CTAButton from "./CTAButton.astro";
+import Logo from "./Logo.astro";
+import { go } from "../lib/site";
+
+interface Props { article: any; }
+const { article } = Astro.props;
+const winner = article.products.find((p: any) => p.id === article.finalVerdict.winnerId);
+---
+<section aria-label="Final verdict" class="not-prose overflow-hidden rounded-xl2 border border-border bg-gradient-to-br from-brand/8 to-surface-2 p-6 sm:p-8">
+  <h2 class="mb-4 text-2xl font-semibold sm:text-3xl">The verdict</h2>
+  <div class="rich max-w-prose">{article.finalVerdict.body.map((p: string) => <p set:html={p} />)}</div>
+  {winner && (
+    <div class="mt-6 flex flex-wrap items-center gap-4 rounded-xl2 border border-border bg-surface p-4">
+      <Logo name={winner.name} size={44} />
+      <div class="mr-auto">
+        <p class="text-xs font-semibold uppercase tracking-wide text-brand">Our winner</p>
+        <p class="text-lg font-semibold">{winner.name}</p>
+      </div>
+      <CTAButton href={go(winner.id, article.slug, "verdict")} label="Check price" />
+    </div>
+  )}
+</section>

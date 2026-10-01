@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Logo from "../../components/Logo.astro";
+import { authors } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const all = await getCollection("articles");
+  return Object.entries(authors).map(([slug, meta]) => ({
+    params: { author: slug },
+    props: {
+      meta,
+      posts: all
+        .filter((a) => a.data.authorSlug === slug)
+        .map((a) => ({ ...a.data, slug: a.id.replace(/\.json$/, "") })),
+    },
+  }));
+}
+const { meta, posts } = Astro.props;
+---
+<BaseLayout title={meta.name} description={meta.bio}>
+  <div class="container-wide py-10">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: meta.name }]} />
+    <div class="mt-6 flex items-center gap-4">
+      <Logo name={meta.name} size={64} />
+      <div>
+        <h1 class="text-3xl font-bold sm:text-4xl">{meta.name}</h1>
+        <p class="text-sm font-semibold text-brand">{meta.role}</p>
+      </div>
+    </div>
+    <p class="mt-4 max-w-2xl prose-lead">{meta.bio}</p>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {posts.map((a: any) => <ArticleCard article={a} />)}
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { categories } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const all = await getCollection("articles");
+  return Object.entries(categories).map(([slug, meta]) => ({
+    params: { category: slug },
+    props: {
+      meta,
+      posts: all
+        .filter((a) => a.data.categorySlug === slug)
+        .map((a) => ({ ...a.data, slug: a.id.replace(/\.json$/, "") })),
+    },
+  }));
+}
+const { meta, posts } = Astro.props;
+---
+<BaseLayout title={`${meta.title} reviews`} description={meta.blurb}>
+  <div class="container-wide py-10">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: meta.title }]} />
+    <h1 class="mt-4 text-4xl font-bold sm:text-5xl">{meta.title}</h1>
+    <p class="mt-3 max-w-2xl prose-lead">{meta.blurb}</p>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {posts.length ? posts.map((a: any) => <ArticleCard article={a} />) : (
+        <p class="text-muted">No reviews here yet — the pipeline will fill this in. Check back soon.</p>
+      )}
+    </div>
+  </div>
+</BaseLayout>

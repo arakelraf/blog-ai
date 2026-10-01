@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import AffiliateDisclosure from "../../components/AffiliateDisclosure.astro";
+import QuickPick from "../../components/QuickPick.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import ProductReview from "../../components/ProductReview.astro";
+import HowToChoose from "../../components/HowToChoose.astro";
+import FAQ from "../../components/FAQ.astro";
+import FinalVerdict from "../../components/FinalVerdict.astro";
+import StickyCTA from "../../components/StickyCTA.astro";
+import RelatedPosts from "../../components/RelatedPosts.astro";
+import { articleJsonLd } from "../../lib/schema";
+import { categories } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const all = await getCollection("articles");
+  return all.map((entry) => {
+    const slug = entry.id.replace(/\.json$/, "");
+    const related = all.filter((e) => entry.data.related.includes(e.id.replace(/\.json$/, "")));
+    return { params: { slug }, props: { entry, slug, related } };
+  });
+}
+
+const { entry, slug, related } = Astro.props;
+const a = { ...entry.data, slug };
+const canonical = `/blog/${slug}`;
+const jsonLd = articleJsonLd(entry.data, new URL(canonical, Astro.site).toString());
+const top = a.products.find((p: any) => p.id === a.quickPick.overall) ?? a.products[0];
+const fmt = (d: Date) => new Date(d).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+const catTitle = categories[a.categorySlug]?.title ?? a.category;
+---
+<BaseLayout title={a.metaTitle} description={a.metaDescription} canonical={canonical} image={`/og/${slug}.svg`} jsonLd={jsonLd}>
+  <article>
+    <!-- Hero -->
+    <div class="container-prose pt-8">
+      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: catTitle, href: `/categories/${a.categorySlug}` }, { label: a.title }]} />
+      {a.demo && (
+        <p class="mt-4 rounded-lg border border-gold/40 bg-gold/10 px-3 py-2 text-xs font-semibold text-gold">
+          DEMO PAGE — sample data for layout preview only. Products, prices and claims are fictional.
+        </p>
+      )}
+      <span class="mt-5 inline-block text-sm font-semibold uppercase tracking-wide text-brand">{catTitle}</span>
+      <h1 class="mt-2 text-3xl font-bold leading-[1.1] sm:text-5xl">{a.title}</h1>
+      <p class="mt-5 prose-lead">{a.lead}</p>
+      <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
+        <span>By <a href={`/authors/${a.authorSlug}`} class="font-medium text-ink hover:text-brand">{a.author}</a></span>
+        <span aria-hidden="true">·</span>
+        <span>Updated {fmt(a.updatedDate ?? a.publishDate)}</span>
+        <span aria-hidden="true">·</span>
+        <span>{a.products.length} tools tested</span>
+      </div>
+      <div class="mt-6"><AffiliateDisclosure /></div>
+    </div>
+
+    <!-- Body -->
+    <div class="container-wide mt-12 flex flex-col gap-14 pb-10">
+      <QuickPick article={a} />
+      <ComparisonTable article={a} />
+
+      <section class="not-prose">
+        <h2 class="mb-6 text-2xl font-semibold sm:text-3xl">The reviews, in depth</h2>
+        <div class="flex flex-col gap-6">
+          {a.products.map((p: any, i: number) => <ProductReview product={p} slug={slug} index={i + 1} />)}
+        </div>
+      </section>
+
+      <HowToChoose data={a.howToChoose} />
+      <FAQ faq={a.faq} />
+      <FinalVerdict article={a} />
+      <RelatedPosts articles={related} />
+    </div>
+  </article>
+
+  <StickyCTA product={top} slug={slug} />
+</BaseLayout>

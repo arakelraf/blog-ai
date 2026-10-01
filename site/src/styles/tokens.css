@@ -1,0 +1,45 @@
+/* Design tokens — the single source of the visual identity.
+   Values are space-separated RGB channels so Tailwind's <alpha-value> works. */
+:root {
+  --bg: 250 249 246;        /* warm paper */
+  --surface: 255 255 255;
+  --surface-2: 245 243 238;
+  --border: 226 222 214;
+  --ink: 24 23 28;          /* near-black, slightly warm */
+  --muted: 102 100 110;
+  --brand: 79 70 229;       /* indigo — editorial brand accent */
+  --brand-ink: 255 255 255;
+  --cta: 234 88 12;         /* vivid orange — action only */
+  --cta-ink: 255 255 255;
+  --gold: 202 138 4;        /* ratings / badges */
+}
+
+:root[data-theme="dark"] {
+  --bg: 14 14 17;
+  --surface: 24 24 29;
+  --surface-2: 32 32 39;
+  --border: 48 48 57;
+  --ink: 237 236 242;
+  --muted: 161 159 172;
+  --brand: 129 125 255;
+  --brand-ink: 17 17 22;
+  --cta: 251 146 60;
+  --cta-ink: 24 16 8;
+  --gold: 234 179 8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: 14 14 17;
+    --surface: 24 24 29;
+    --surface-2: 32 32 39;
+    --border: 48 48 57;
+    --ink: 237 236 242;
+    --muted: 161 159 172;
+    --brand: 129 125 255;
+    --brand-ink: 17 17 22;
+    --cta: 251 146 60;
+    --cta-ink: 24 16 8;
+    --gold: 234 179 8;
+  }
+}

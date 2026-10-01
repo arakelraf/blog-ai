@@ -1,0 +1,26 @@
+---
+interface Props { value: number; showNumber?: boolean; }
+const { value, showNumber = true } = Astro.props;
+const full = Math.floor(value);
+const half = value - full >= 0.5;
+const stars = Array.from({ length: 5 }, (_, i) => (i < full ? "full" : i === full && half ? "half" : "empty"));
+---
+<span class="inline-flex items-center gap-1.5" aria-label={`Rated ${value} out of 5`}>
+  <span class="inline-flex" aria-hidden="true">
+    {stars.map((s) => (
+      <svg width="16" height="16" viewBox="0 0 24 24" class="-mr-0.5">
+        <defs>
+          <linearGradient id={`h-${s}`}>
+            <stop offset="50%" stop-color="rgb(var(--gold))" />
+            <stop offset="50%" stop-color="rgb(var(--border))" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M12 2l2.9 6.3 6.6.6-5 4.4 1.5 6.5L12 17l-5.9 3.3 1.5-6.5-5-4.4 6.6-.6z"
+          fill={s === "full" ? "rgb(var(--gold))" : s === "half" ? "url(#h-half)" : "rgb(var(--border))"}
+        />
+      </svg>
+    ))}
+  </span>
+  {showNumber && <span class="text-sm font-semibold tabular-nums">{value.toFixed(1)}</span>}
+</span>

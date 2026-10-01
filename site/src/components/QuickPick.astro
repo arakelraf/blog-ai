@@ -1,0 +1,18 @@
+---
+import ProductCard from "./ProductCard.astro";
+
+interface Props { article: any; }
+const { article } = Astro.props;
+const byId = (id: string) => article.products.find((p: any) => p.id === id);
+const picks = [
+  { p: byId(article.quickPick.overall), label: "Check price" },
+  { p: byId(article.quickPick.budget), label: "See plans" },
+  { p: byId(article.quickPick.premium), label: "Check price" },
+].filter((x) => x.p);
+---
+<section aria-label="Top picks at a glance" class="not-prose">
+  <h2 class="mb-4 text-2xl font-semibold sm:text-3xl">The top picks, fast</h2>
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {picks.map((x) => <ProductCard product={x.p} slug={article.slug} block="quickpick" ctaLabel={x.label} />)}
+  </div>
+</section>

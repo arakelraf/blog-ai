@@ -1,0 +1,43 @@
+---
+import Rating from "./Rating.astro";
+import RoleBadge from "./RoleBadge.astro";
+import Logo from "./Logo.astro";
+import CTAButton from "./CTAButton.astro";
+import { go } from "../lib/site";
+
+interface Props { product: any; slug: string; block: string; ctaLabel?: string; }
+const { product, slug, block, ctaLabel } = Astro.props;
+const price = product.pricing?.[0]?.price;
+---
+<article class="card group flex flex-col gap-4 p-5">
+  <div class="flex items-start justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <Logo name={product.name} />
+      <div>
+        <h3 class="text-lg font-semibold leading-tight">{product.name}</h3>
+        <p class="text-sm text-muted">{product.tagline}</p>
+      </div>
+    </div>
+    <RoleBadge role={product.role} />
+  </div>
+
+  <div class="flex items-center justify-between">
+    <Rating value={product.rating} />
+    {price && <span class="text-sm font-semibold text-ink">{price}</span>}
+  </div>
+
+  <ul class="flex flex-col gap-1.5 text-sm text-ink/85">
+    {product.keyFeatures.slice(0, 3).map((f: string) => (
+      <li class="flex gap-2">
+        <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>{f}
+      </li>
+    ))}
+  </ul>
+
+  <div class="mt-auto pt-1">
+    <CTAButton href={go(product.id, slug, block)} label={ctaLabel ?? "Check price"} />
+    {product.promoCode && (
+      <p class="mt-2 text-xs text-muted">Code <span class="font-mono font-semibold text-ink">{product.promoCode}</span> at checkout</p>
+    )}
+  </div>
+</article>

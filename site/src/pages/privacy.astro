@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../lib/site";
+---
+<BaseLayout title="Privacy" description="Privacy policy.">
+  <div class="container-prose py-12">
+    <h1 class="text-4xl font-bold sm:text-5xl">Privacy</h1>
+    <div class="rich mt-6 text-base">
+      <p>{site.name} keeps data collection minimal. We log aggregate, non-identifying click data on outbound affiliate links (which link, from which page, and a coarse country) to understand what readers find useful.</p>
+      <p>We don't sell personal data. Third parties you click through to (the tools we review) have their own privacy policies. If you have questions about your data, contact us.</p>
+      <p class="text-sm text-muted">This is a starter policy template — replace with your finalized legal text before launch.</p>
+    </div>
+  </div>
+</BaseLayout>

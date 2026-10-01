@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../lib/site";
+---
+<BaseLayout title="Affiliate disclosure" description="How affiliate links work on this site.">
+  <div class="container-prose py-12">
+    <h1 class="text-4xl font-bold sm:text-5xl">Affiliate disclosure</h1>
+    <div class="rich mt-6 text-base">
+      <p>{site.name} participates in affiliate programs. Some links on this site are affiliate links, meaning that if you click one and make a purchase, we may receive a commission — at no additional cost to you.</p>
+      <p>Affiliate relationships never influence our rankings, ratings or whether a product is recommended. We test independently and report our honest findings, including drawbacks. Products are ranked on merit alone.</p>
+      <p>Affiliate links are marked with <code>rel="sponsored nofollow"</code> and route through our redirect so we can measure clicks. Prices and terms are accurate as of the last update shown on each page but may change — always confirm on the vendor's site.</p>
+    </div>
+  </div>
+</BaseLayout>

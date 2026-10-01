@@ -1,0 +1,18 @@
+---
+import { categories } from "../lib/site";
+interface Props { article: any; }
+const { article } = Astro.props;
+const cat = categories[article.categorySlug]?.title ?? article.category;
+const fmt = (d: Date) => new Date(d).toLocaleDateString("en-US", { month: "short", year: "numeric" });
+---
+<a href={`/blog/${article.slug}`} class="card group flex flex-col overflow-hidden transition-all hover:-translate-y-1 hover:shadow-pop">
+  <div class="relative aspect-[16/9] overflow-hidden bg-surface-2">
+    <img src={`/og/${article.slug}.svg`} alt="" width="640" height="360" loading="lazy" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+  </div>
+  <div class="flex flex-1 flex-col gap-2 p-5">
+    <span class="text-xs font-semibold uppercase tracking-wide text-brand">{cat}</span>
+    <h3 class="text-lg font-semibold leading-snug group-hover:text-brand">{article.title}</h3>
+    <p class="line-clamp-2 text-sm text-muted">{article.metaDescription}</p>
+    <span class="mt-auto pt-1 text-xs text-muted">{fmt(article.publishDate)}</span>
+  </div>
+</a>
