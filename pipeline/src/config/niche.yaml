@@ -1,0 +1,46 @@
+# Niche configuration — the single knob set for the whole pipeline.
+niche: "AI tools"
+language: "en"
+# DataForSEO location codes: 2840=US, 2124=Canada, 2826=UK
+markets:
+  - { code: us, locationCode: 2840, languageCode: en }
+  - { code: ca, locationCode: 2124, languageCode: en }
+  - { code: uk, locationCode: 2826, languageCode: en }
+
+# Seed topics — expanded by DataForSEO suggestions/related + autocomplete.
+seeds:
+  - { topic: "AI writing tools", category: "ai-writing" }
+  - { topic: "AI website builder", category: "ai-website-builders" }
+  - { topic: "AI SEO tools", category: "ai-seo" }
+  - { topic: "AI image generator", category: "ai-image" }
+  - { topic: "AI video generator", category: "ai-video" }
+  - { topic: "AI chatbot", category: "ai-chatbots" }
+  - { topic: "AI automation tools", category: "ai-automation" }
+  - { topic: "AI coding assistant", category: "ai-coding" }
+
+# Stage 1 — discovery
+discover:
+  maxKeywordsPerSeed: 60
+  minVolume: 100
+  maxDifficulty: 70
+
+# Stage 3 — scoring: score = volume * cpcFactor * commissionFactor / (difficulty + 10)
+scoring:
+  cpcWeight: 1.0 # cpcFactor = 1 + cpc * cpcWeight
+  # commissionFactor by number of qualifying affiliates matched to the cluster
+  commissionByCount: { "0": 0.0, "1": 0.6, "2": 1.0, "3": 1.3, "4": 1.5 }
+  minScore: 300 # clusters below this are parked, not generated
+  topNPerDay: 5 # publications per day
+
+# Stage 6 — publishing
+publish:
+  mode: review # review | auto
+  siteContentDir: "../site/src/content/articles"
+
+# Budget guardrail — pipeline halts for the day if exceeded (USD).
+budget:
+  dailyUsd: 10.0
+
+# Refresh (Stage 7)
+refresh:
+  staleDays: 90
