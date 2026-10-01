@@ -115,10 +115,21 @@ function buildFaq(
     { q: `Do these tools offer a free trial?`, a: `Most do; check each vendor's current terms on their site, since trial lengths change.` },
     { q: `Can I switch tools later?`, a: `Yes — all the picks here export your work, so you're not locked in if your needs change.` },
   ];
-  const fromPaa = paa.map((q) => ({
-    q,
-    a: `Based on our testing, ${top.name} is the safest default for most people, with the others better for specific needs.`,
-  }));
+  const openers = [
+    "The short version: it depends on how you work.",
+    "Here's our honest take.",
+    "In most cases, yes — with one caveat.",
+    "It mostly comes down to budget.",
+    "We get this one a lot.",
+  ];
+  const fromPaa = paa.map((q, i) => {
+    const prod = products[i % products.length]!;
+    const detail = prod.pricing[0] ? `${prod.name} (from ${prod.pricing[0].price})` : prod.name;
+    return {
+      q,
+      a: `${openers[i % openers.length]} ${detail} is the one we'd reach for here${prod.cons[0] ? `, just keep in mind ${prod.cons[0].toLowerCase()}` : ""}.`,
+    };
+  });
   const combined = [...fromPaa, ...fallback];
   // De-dupe by question and guarantee 5-8 entries.
   const seen = new Set<string>();
