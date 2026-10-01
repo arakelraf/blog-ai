@@ -3,6 +3,7 @@ import { buildContext } from "./context.js";
 import { migrate } from "./db/migrate.js";
 import { registerDiscover } from "./routes/discover.js";
 import { registerMatch } from "./routes/match.js";
+import { registerGenerate } from "./routes/generate.js";
 import { registerAdmin } from "./routes/admin.js";
 import { logger } from "./lib/logger.js";
 import { spendToday } from "./lib/runs.js";
@@ -27,6 +28,7 @@ async function main(): Promise<void> {
 
   registerDiscover(app, ctx);
   registerMatch(app, ctx);
+  registerGenerate(app, ctx);
   await registerAdmin(app, ctx);
 
   const port = ctx.env.PORT;
