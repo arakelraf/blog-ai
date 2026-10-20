@@ -49,15 +49,37 @@ const catTitle = categories[a.categorySlug]?.title ?? a.category;
           DEMO PAGE — sample data for layout preview only. Products, prices and claims are fictional.
         </p>
       )}
-      <span class="mt-5 inline-block text-sm font-semibold uppercase tracking-wide text-brand">{catTitle}</span>
-      <h1 class="mt-2 text-3xl font-bold leading-[1.1] sm:text-5xl">{a.title}</h1>
+      <span class="mt-5 inline-flex items-center gap-1.5 rounded-full border border-brand/25 bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand">
+        <span class="h-1.5 w-1.5 rounded-full bg-brand"></span>{catTitle}
+      </span>
+      <h1 class="mt-4 text-[2rem] font-bold leading-[1.08] tracking-tight sm:text-[3.25rem]">
+        {a.titleAccent && a.title.includes(a.titleAccent) ? (
+          <>
+            {a.title.slice(0, a.title.indexOf(a.titleAccent))}
+            <span class="bg-gradient-to-r from-brand to-[#f59e0b] bg-clip-text text-transparent">{a.titleAccent}</span>
+            {a.title.slice(a.title.indexOf(a.titleAccent) + a.titleAccent.length)}
+          </>
+        ) : a.title}
+      </h1>
       <p class="mt-5 prose-lead">{a.lead}</p>
-      <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
+
+      <!-- Trust chips -->
+      <div class="mt-6 flex flex-wrap items-center gap-2 text-sm">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 font-medium text-ink shadow-[0_1px_1px_rgb(0_0_0/0.03)]">
+          <svg class="h-4 w-4 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Hands-on tested
+        </span>
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 font-medium text-ink shadow-[0_1px_1px_rgb(0_0_0/0.03)]">
+          <svg class="h-4 w-4 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+          Updated {fmt(a.updatedDate ?? a.publishDate)}
+        </span>
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 font-medium text-ink shadow-[0_1px_1px_rgb(0_0_0/0.03)]">
+          <svg class="h-4 w-4 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          {a.products.length} tools · 8 categories
+        </span>
+      </div>
+      <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted">
         <span>By <a href={`/authors/${a.authorSlug}`} class="font-medium text-ink hover:text-brand">{a.author}</a></span>
-        <span aria-hidden="true">·</span>
-        <span>Updated {fmt(a.updatedDate ?? a.publishDate)}</span>
-        <span aria-hidden="true">·</span>
-        <span>{a.products.length} tools tested</span>
         <span aria-hidden="true">·</span>
         <AffiliateDisclosure compact />
       </div>

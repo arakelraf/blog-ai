@@ -34,6 +34,7 @@ const product = z.object({
 
 const articleSchema = z.object({
   title: z.string(),
+  titleAccent: z.string().optional(), // substring of title rendered with a gradient highlight
   metaTitle: z.string(),
   metaDescription: z.string(),
   year: z.number(),
