@@ -32,7 +32,7 @@ const payload = { a: mk(a), b: mk(b) };
     <div class="mt-6 grid gap-4 sm:grid-cols-2" data-cards></div>
 
     <div class="mt-4 rounded-xl border border-border bg-surface-2 p-4 text-center text-sm font-medium" data-diff>&nbsp;</div>
-    <p class="mt-3 text-xs text-muted">List prices as of 2026. Annual figures are an estimate (both vendors discount roughly 17% for yearly billing) — always confirm the current price on each site before buying.</p>
+    <p class="mt-3 text-xs text-muted">List prices as of 2026. Annual figures are an estimate (both vendors discount roughly 17% for yearly billing). Always confirm the current price on each site before buying.</p>
   </div>
 
   <script type="application/json" id="pc-data" set:html={JSON.stringify(payload)}></script>
@@ -49,21 +49,24 @@ const payload = { a: mk(a), b: mk(b) };
       ["a", "b"].forEach((k) => {
         const t = data[k];
         const card = document.createElement("div");
-        card.className = "rounded-xl border border-border p-4";
+        card.className = "flex h-full flex-col rounded-xl border border-border p-4";
         card.style.borderTopColor = t.accent;
         card.style.borderTopWidth = "3px";
-        let html = '<p class="font-bold" style="color:' + t.accent + '">' + t.name + '</p>' +
-          '<label class="mt-3 block text-xs font-semibold uppercase tracking-wide text-muted">Plan</label>' +
+        card.dataset.card = k;
+        let top = '<p class="font-bold" style="color:' + t.accent + '">' + t.name + '</p>' +
+          '<label class="mt-3 block text-xs font-semibold uppercase tracking-wide text-muted">Choose a plan</label>' +
           '<div class="mt-1.5 flex flex-wrap gap-1.5" data-plans="' + k + '"></div>';
         if (t.addons.length) {
-          html += '<div class="mt-3 space-y-1.5" data-addons="' + k + '"></div>';
+          top += '<label class="mt-3 block text-xs font-semibold uppercase tracking-wide text-muted">Add-ons</label>' +
+                 '<div class="mt-1.5 space-y-1.5" data-addons="' + k + '"></div>';
         }
-        html += '<div class="mt-4 border-t border-border pt-3">' +
-          '<div class="flex items-baseline justify-between"><span class="text-sm text-muted">Per month</span><span class="font-display text-2xl font-bold tabular-nums" data-mo="' + k + '"></span></div>' +
-          '<div class="flex items-baseline justify-between text-sm text-muted"><span>Per year</span><span class="font-semibold tabular-nums" data-yr="' + k + '"></span></div>' +
+        const bottom =
+          '<div class="mt-5 rounded-lg bg-surface-2 p-3" data-result="' + k + '">' +
+          '<div class="flex items-baseline justify-between"><span class="text-sm font-medium text-muted">Per month</span><span class="font-display text-3xl font-bold tabular-nums" data-mo="' + k + '"></span></div>' +
+          '<div class="mt-0.5 flex items-baseline justify-between text-sm text-muted"><span>Per year</span><span class="font-semibold tabular-nums" data-yr="' + k + '"></span></div>' +
           '</div>' +
-          '<a href="' + t.href + '" rel="sponsored nofollow" target="_blank" class="btn-cta mt-4 w-full">Check ' + t.name + ' price</a>';
-        card.innerHTML = html;
+          '<a href="' + t.href + '" rel="sponsored nofollow" target="_blank" class="btn-cta mt-3 w-full">Check ' + t.name + ' price</a>';
+        card.innerHTML = '<div>' + top + '</div><div class="mt-auto pt-2">' + bottom + '</div>';
         cards.appendChild(card);
 
         const plansWrap = card.querySelector('[data-plans="' + k + '"]');
@@ -119,10 +122,17 @@ const payload = { a: mk(a), b: mk(b) };
         const ma = monthly("a"), mb = monthly("b");
         const diff = root.querySelector("[data-diff]");
         const d = Math.abs(ma - mb) * 12;
-        if (d < 1) { diff.textContent = "Same yearly cost on these plans."; diff.style.color = "rgb(var(--muted))"; }
+        const tie = d < 1;
+        const cheapKey = ma <= mb ? "a" : "b";
+        ["a", "b"].forEach((k) => {
+          const box = root.querySelector('[data-result="' + k + '"]');
+          const isCheap = !tie && k === cheapKey;
+          box.style.boxShadow = isCheap ? "inset 0 0 0 2px " + data[k].accent : "none";
+        });
+        if (tie) { diff.innerHTML = "Same yearly cost on these plans."; diff.style.color = "rgb(var(--muted))"; }
         else {
-          const cheaper = ma < mb ? data.a.name : data.b.name;
-          diff.innerHTML = '<b>' + cheaper + '</b> is ' + fmt(d) + ' cheaper per year with this setup.';
+          const cheaper = data[cheapKey].name;
+          diff.innerHTML = '💰 <b>' + cheaper + '</b> costs ' + fmt(d) + ' less per year with this setup.';
           diff.style.color = "rgb(var(--ink))";
         }
       }
