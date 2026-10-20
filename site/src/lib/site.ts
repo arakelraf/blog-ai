@@ -12,6 +12,9 @@ export const site = {
   twitter: "@stacked",
   // Paste the Google Search Console verification token here (meta-tag method).
   googleVerification: "",
+  // Pre-launch: keep the site out of search until real content + real domain.
+  // Flip to false when ready to be indexed.
+  noindex: true,
 };
 
 /** Join a root-absolute path to the production base URL. */

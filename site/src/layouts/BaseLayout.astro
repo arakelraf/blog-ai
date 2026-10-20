@@ -24,6 +24,7 @@ const fullTitle = title === site.name ? title : `${title} · ${site.name}`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {site.noindex && <meta name="robots" content="noindex, nofollow" />}
     {site.googleVerification && <meta name="google-site-verification" content={site.googleVerification} />}
     <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" href="/sitemap.xml" />
