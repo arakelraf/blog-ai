@@ -100,6 +100,10 @@ const payload = { a: mk(a), b: mk(b) };
         return st.bill === "annual" ? m * ANNUAL : m;
       }
 
+      root.querySelectorAll(".pc-bill").forEach((btn) => {
+        btn.addEventListener("click", () => { st.bill = btn.dataset.bill; render(); });
+      });
+
       function render() {
         root.querySelectorAll(".pc-bill").forEach((btn) => {
           const on = btn.dataset.bill === st.bill;
