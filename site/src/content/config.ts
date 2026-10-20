@@ -20,6 +20,7 @@ const product = z.object({
   role: productRole,
   rating: z.number().min(0).max(5),
   tagline: z.string(),
+  award: z.string().optional(), // role-based crown shown in the versus hero, e.g. "Best all-rounder"
   forWho: z.string(),
   keyFeatures: z.array(z.string()).min(2),
   pros: z.array(z.string()).min(2),
@@ -45,6 +46,7 @@ const articleSchema = z.object({
   publishDate: z.coerce.date(),
   updatedDate: z.coerce.date().optional(),
   demo: z.boolean().default(false), // marks fake-data demo pages
+  heroNote: z.string().optional(), // honest one-liner under the versus hero (HTML <strong> allowed)
   quickPick: z.object({
     overall: z.string(), // product id
     budget: z.string(),

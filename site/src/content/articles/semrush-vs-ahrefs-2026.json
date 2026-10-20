@@ -13,6 +13,7 @@
   "publishDate": "2026-10-20",
   "updatedDate": "2026-10-20",
   "demo": false,
+  "heroNote": "Scores are averaged across 8 categories. Heads-up: <strong>Ahrefs actually wins more individual categories</strong> — its higher marks on backlinks, ease of use and price are real. Semrush's higher average comes almost entirely from one lopsided category (all-in-one breadth, 9.5 vs 6.0). So read this as a tie that splits by use case, not a knockout.",
   "quickPick": { "overall": "semrush", "budget": "ahrefs", "premium": "ahrefs" },
   "products": [
     {
@@ -21,6 +22,7 @@
       "role": "top_pick",
       "rating": 4.6,
       "tagline": "The all-in-one marketing suite",
+      "award": "Best all-rounder",
       "forWho": "Agencies, marketing teams and anyone who wants SEO, PPC, content and local in one place.",
       "keyFeatures": [
         "SEO + PPC + content + local + social in one platform",
@@ -55,6 +57,7 @@
       "role": "premium",
       "rating": 4.6,
       "tagline": "The backlink and pure-SEO specialist",
+      "award": "Best for SEO specialists",
       "forWho": "Link builders, SEO specialists and anyone who wants the cleanest, deepest backlink data.",
       "keyFeatures": [
         "Site Explorer — the gold-standard backlink analysis tool",
@@ -112,7 +115,8 @@
   "finalVerdict": {
     "winnerId": "semrush",
     "body": [
-      "If you want one answer: <strong>Semrush</strong> is the better pick for most people, because it does the most — SEO, PPC, content and local in a single platform — and it's especially strong for US keyword research and agency work.",
+      "Let's be straight about the scores first: <strong>Ahrefs wins more of the eight categories</strong>, mostly on backlinks, ease of use and price. Semrush only pulls ahead on the overall average because its all-in-one breadth is so far in front (9.5 vs 6.0) that it lifts the mean. Neither \"wins\" outright — it depends on your job.",
+      "If you want the one-line default for the <strong>widest</strong> use case — someone who wants SEO plus PPC, content and local in a single platform, or who runs client work — <strong>Semrush</strong> is the safer all-rounder, and it's especially strong for US keyword research and agency reporting.",
       "But this is a genuine \"depends.\" If your job is <strong>link building and pure SEO data</strong>, Ahrefs is the sharper, cleaner tool and arguably the better buy. Decide by your actual day-to-day, not the feature list: breadth → Semrush, backlink depth → Ahrefs."
     ]
   },
