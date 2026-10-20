@@ -2,7 +2,7 @@
 import "../styles/tokens.css";
 import "../styles/global.css";
 import ThemeToggle from "../components/ThemeToggle.astro";
-import { site, categories } from "../lib/site";
+import { site, categories, abs } from "../lib/site";
 
 interface Props {
   title: string;
@@ -12,8 +12,9 @@ interface Props {
   jsonLd?: unknown;
 }
 const { title, description = site.description, canonical = Astro.url.pathname, image, jsonLd } = Astro.props;
-const canonicalUrl = new URL(canonical, site.url).toString();
-const ogImage = new URL(image ?? "/og-default.svg", site.url).toString();
+// abs() appends to the production base URL (keeps the /blog-ai path on Pages).
+const canonicalUrl = abs(canonical);
+const ogImage = abs(image ?? "/og-default.svg");
 const fullTitle = title === site.name ? title : `${title} · ${site.name}`;
 ---
 <!doctype html>
@@ -23,6 +24,7 @@ const fullTitle = title === site.name ? title : `${title} · ${site.name}`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {site.googleVerification && <meta name="google-site-verification" content={site.googleVerification} />}
     <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" href="/sitemap.xml" />
 

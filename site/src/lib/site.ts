@@ -4,11 +4,21 @@ export const site = {
   description:
     "Hands-on, no-nonsense reviews and comparisons of AI software. We test the tools so you don't waste a subscription.",
   locale: "en-US",
-  // Change in astro.config.mjs (SITE) for the real domain; mirrored here for metadata.
-  url: "https://example.com",
+  // Production URL (includes the /blog-ai base on GitHub Pages).
+  // When you move to a custom domain served at root, set this to e.g.
+  // "https://yourdomain.com" and set BASE="" in the deploy workflow.
+  url: "https://arakelraf.github.io/blog-ai",
   author: "Stacked Editorial",
   twitter: "@stacked",
+  // Paste the Google Search Console verification token here (meta-tag method).
+  googleVerification: "",
 };
+
+/** Join a root-absolute path to the production base URL. */
+export function abs(path: string): string {
+  const p = path.startsWith("/") ? path : `/${path}`;
+  return `${site.url}${p}`;
+}
 
 export const categories: Record<string, { title: string; blurb: string }> = {
   "ai-writing": {

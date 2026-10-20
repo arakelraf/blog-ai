@@ -12,7 +12,7 @@ import FinalVerdict from "../../components/FinalVerdict.astro";
 import StickyCTA from "../../components/StickyCTA.astro";
 import RelatedPosts from "../../components/RelatedPosts.astro";
 import { articleJsonLd } from "../../lib/schema";
-import { categories } from "../../lib/site";
+import { categories, abs } from "../../lib/site";
 
 export async function getStaticPaths() {
   const all = await getCollection("articles");
@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 const { entry, slug, related } = Astro.props;
 const a = { ...entry.data, slug };
 const canonical = `/blog/${slug}`;
-const jsonLd = articleJsonLd(entry.data, new URL(canonical, Astro.site).toString());
+const jsonLd = articleJsonLd(entry.data, abs(canonical));
 const top = a.products.find((p: any) => p.id === a.quickPick.overall) ?? a.products[0];
 const fmt = (d: Date) => new Date(d).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 const catTitle = categories[a.categorySlug]?.title ?? a.category;
