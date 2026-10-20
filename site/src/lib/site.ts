@@ -48,5 +48,8 @@ export const authors: Record<string, { name: string; role: string; bio: string }
 
 export function go(productId: string, slug: string, block: string): string {
   const params = new URLSearchParams({ src: slug, pos: block });
-  return `/go/${productId}?${params.toString()}`;
+  // Absolute URL (includes the deploy base, e.g. /blog-ai). This keeps the link
+  // correct whether it lands in static HTML or is injected by client-side JS,
+  // where the post-build base rewrite can't reach.
+  return `${site.url}/go/${productId}?${params.toString()}`;
 }
