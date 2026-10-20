@@ -1,11 +1,12 @@
 {
   "date": "2026-10-20",
   "market": "US + Canada + UK (English)",
-  "note": "Monetizable-first: commercial long-tail queries built around AI services that HAVE an affiliate program. These are 'winnable' (lower competition, buyer intent) — the opposite of brand megaterms. Confirm volume/competition in Keyword Planner; confirm commission/cookie on each program's page.",
+  "note": "Volumes/competition from Google Keyword Planner historical metrics (batch 1: ai-writing + ai-seo). Remaining categories pending batches 2-3. Confirm commission/cookie on each program's page.",
   "rows": [
     {
       "query": "jasper review",
-      "est_volume": "verify in KP",
+      "volume": "500",
+      "competition": "Low",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-writing",
@@ -20,7 +21,8 @@
     },
     {
       "query": "jasper vs copy.ai",
-      "est_volume": "verify in KP",
+      "volume": "50",
+      "competition": "Low",
       "intent": "commercial",
       "page_type": "versus",
       "category": "ai-writing",
@@ -35,7 +37,8 @@
     },
     {
       "query": "writesonic review",
-      "est_volume": "verify in KP",
+      "volume": "500",
+      "competition": "Low",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-writing",
@@ -46,11 +49,12 @@
       "commission": "20% recurring (12 mo)",
       "cookie": "60 days",
       "apply_url": "https://writesonic.com/affiliate",
-      "notes": "competition ~low-med. Recurring; good for budget angle."
+      "notes": "↑ +900% last 3mo (rising) · competition ~low-med. Recurring; good for budget angle."
     },
     {
       "query": "sudowrite review",
-      "est_volume": "verify in KP",
+      "volume": "500",
+      "competition": "Medium",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-writing",
@@ -65,7 +69,8 @@
     },
     {
       "query": "grammarly vs quillbot",
-      "est_volume": "verify in KP",
+      "volume": "500",
+      "competition": "Low",
       "intent": "commercial",
       "page_type": "versus",
       "category": "ai-writing",
@@ -80,7 +85,8 @@
     },
     {
       "query": "surfer seo review",
-      "est_volume": "verify in KP",
+      "volume": "500",
+      "competition": "Low",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-seo",
@@ -95,7 +101,8 @@
     },
     {
       "query": "surfer seo vs frase",
-      "est_volume": "verify in KP",
+      "volume": "50",
+      "competition": "Low",
       "intent": "commercial",
       "page_type": "versus",
       "category": "ai-seo",
@@ -110,7 +117,8 @@
     },
     {
       "query": "semrush vs ahrefs",
-      "est_volume": "verify in KP",
+      "volume": "5000",
+      "competition": "Low",
       "intent": "commercial",
       "page_type": "versus",
       "category": "ai-seo",
@@ -121,11 +129,12 @@
       "commission": "$200 per sale + $10 per trial",
       "cookie": "120 days",
       "apply_url": "https://www.semrush.com/lp/affiliate-program/",
-      "notes": "competition ~high. High value ($200/sale) but competitive — long-tail it."
+      "notes": "⭐ 5K/mo at LOW competition · competition ~high. High value ($200/sale) but competitive — long-tail it."
     },
     {
       "query": "frase review",
-      "est_volume": "verify in KP",
+      "volume": "500",
+      "competition": "Low",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-seo",
@@ -140,7 +149,8 @@
     },
     {
       "query": "synthesia review",
-      "est_volume": "verify in KP",
+      "volume": "500",
+      "competition": "Low",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-video",
@@ -155,7 +165,8 @@
     },
     {
       "query": "synthesia vs heygen",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "versus",
       "category": "ai-video",
@@ -170,7 +181,8 @@
     },
     {
       "query": "best ai video generator for youtube",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "best-list",
       "category": "ai-video",
@@ -185,7 +197,8 @@
     },
     {
       "query": "heygen review",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-video",
@@ -200,7 +213,8 @@
     },
     {
       "query": "pictory review",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-video",
@@ -215,7 +229,8 @@
     },
     {
       "query": "descript review",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-video",
@@ -230,7 +245,8 @@
     },
     {
       "query": "elevenlabs review",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-audio",
@@ -245,7 +261,8 @@
     },
     {
       "query": "best ai voice generator",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "best-list",
       "category": "ai-audio",
@@ -260,7 +277,8 @@
     },
     {
       "query": "murf ai vs elevenlabs",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "versus",
       "category": "ai-audio",
@@ -275,7 +293,8 @@
     },
     {
       "query": "leonardo ai review",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-image",
@@ -290,7 +309,8 @@
     },
     {
       "query": "best midjourney alternatives",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "alternatives",
       "category": "ai-image",
@@ -305,7 +325,8 @@
     },
     {
       "query": "canva ai review",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-image",
@@ -320,7 +341,8 @@
     },
     {
       "query": "fireflies vs otter",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "versus",
       "category": "ai-audio",
@@ -335,7 +357,8 @@
     },
     {
       "query": "best ai meeting assistant",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "best-list",
       "category": "ai-audio",
@@ -350,7 +373,8 @@
     },
     {
       "query": "gamma app review",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-general",
@@ -365,7 +389,8 @@
     },
     {
       "query": "best ai presentation maker",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "best-list",
       "category": "ai-general",
@@ -380,7 +405,8 @@
     },
     {
       "query": "make vs zapier",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "versus",
       "category": "ai-automation",
@@ -395,7 +421,8 @@
     },
     {
       "query": "best ai website builder",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "best-list",
       "category": "ai-website-builders",
@@ -410,7 +437,8 @@
     },
     {
       "query": "10web review",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "review",
       "category": "ai-website-builders",
@@ -425,7 +453,8 @@
     },
     {
       "query": "perplexity vs chatgpt",
-      "est_volume": "verify in KP",
+      "volume": "pending KP",
+      "competition": "—",
       "intent": "commercial",
       "page_type": "versus",
       "category": "ai-chatbots",

@@ -19,7 +19,8 @@ date = sys.argv[1] if len(sys.argv) > 1 else datetime.date.today().isoformat()
 COLUMNS = [
     ("#", 5),
     ("query", 34),
-    ("est_volume", 14),
+    ("volume", 12),
+    ("competition", 13),
     ("intent", 14),
     ("page_type", 13),
     ("category", 16),
@@ -81,10 +82,12 @@ for ri, r in enumerate(rows, start=2):
 ws.freeze_panes = "A2"
 ws.auto_filter.ref = f"A1:{ws.cell(row=1, column=len(COLUMNS)).column_letter}{len(rows)+1}"
 
-# status dropdown
+# status dropdown (find the status column dynamically)
+status_col = next(i for i, (n, _w) in enumerate(COLUMNS, start=1) if n == "status")
+status_letter = ws.cell(row=1, column=status_col).column_letter
 dv = DataValidation(type="list", formula1='"pending,approved,registered,rejected"', allow_blank=True)
 ws.add_data_validation(dv)
-dv.add(f"O2:O{len(rows)+1}")
+dv.add(f"{status_letter}2:{status_letter}{len(rows)+1}")
 
 out = HERE / f"keywords-{date}.xlsx"
 wb.save(out)
