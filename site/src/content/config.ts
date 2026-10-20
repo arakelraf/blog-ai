@@ -100,7 +100,13 @@ const articleSchema = z.object({
         pullQuote: z.string().optional(),
         takeaway: z.object({ winnerId: z.string(), text: z.string() }).optional(),
         screenshot: z
-          .object({ caption: z.string(), credit: z.string().optional(), browser: z.string().optional() })
+          .object({
+            src: z.string().optional(), // real image path under /public; slot hidden until provided
+            alt: z.string().optional(),
+            caption: z.string(),
+            credit: z.string().optional(),
+            browser: z.string().optional(),
+          })
           .optional(),
       }),
     )
