@@ -14,13 +14,11 @@ const base = variant === "cta" ? "btn-cta" : "btn-ghost";
   href={href}
   rel="sponsored nofollow"
   target="_blank"
-  class={`group ${base} ${small ? "px-4 py-2 text-xs" : ""} ${block ? "w-full" : ""}`}
+  class={`group ${base} ${small ? "!px-4 !py-2.5 !text-[13px]" : ""} ${block ? "w-full" : ""} ${sub ? "flex-col !gap-0.5 !py-2.5" : ""}`}
 >
-  <span class="flex flex-col items-start leading-tight">
-    <span class="inline-flex items-center gap-1.5">
-      {label}
-      <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-    </span>
-    {sub && <span class="text-[11px] font-medium opacity-80">{sub}</span>}
+  <span class="inline-flex items-center gap-2">
+    <span>{label}</span>
+    <svg aria-hidden="true" class="h-[1.05em] w-[1.05em] transition-transform duration-150 ease-out group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
   </span>
+  {sub && <span class="text-[11px] font-medium uppercase tracking-wide opacity-75">{sub}</span>}
 </a>
