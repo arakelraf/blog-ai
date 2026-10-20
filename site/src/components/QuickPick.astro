@@ -4,11 +4,14 @@ import ProductCard from "./ProductCard.astro";
 interface Props { article: any; }
 const { article } = Astro.props;
 const byId = (id: string) => article.products.find((p: any) => p.id === id);
-const picks = [
+const raw = [
   { p: byId(article.quickPick.overall), label: "Check price" },
   { p: byId(article.quickPick.budget), label: "See plans" },
   { p: byId(article.quickPick.premium), label: "Check price" },
 ].filter((x) => x.p);
+// De-duplicate by product id — versus pages with 2 products shouldn't repeat a card.
+const seen = new Set<string>();
+const picks = raw.filter((x) => (seen.has(x.p.id) ? false : (seen.add(x.p.id), true)));
 ---
 <section aria-label="Top picks at a glance" class="not-prose">
   <h2 class="mb-4 text-2xl font-semibold sm:text-3xl">The top picks, fast</h2>
