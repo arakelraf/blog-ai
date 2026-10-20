@@ -9,6 +9,7 @@ import ScoreBars from "../../components/ScoreBars.astro";
 import ScorecardRadar from "../../components/ScorecardRadar.astro";
 import ScoreWeights from "../../components/ScoreWeights.astro";
 import PricingChart from "../../components/PricingChart.astro";
+import PricingProof from "../../components/PricingProof.astro";
 import PriceCalculator from "../../components/PriceCalculator.astro";
 import DeepDive from "../../components/DeepDive.astro";
 import DecisionHelper from "../../components/DecisionHelper.astro";
@@ -94,6 +95,7 @@ const catTitle = categories[a.categorySlug]?.title ?? a.category;
       {a.sections && a.sections.length > 0 && <DeepDive article={a} />}
       <PriceCalculator article={a} />
       <PricingChart article={a} />
+      {a.pricingShots && a.pricingShots.length > 0 && <PricingProof article={a} />}
       <ComparisonTable article={a} />
 
       <section class="not-prose">

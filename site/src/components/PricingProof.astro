@@ -1,0 +1,29 @@
+---
+interface Props { article: any; }
+const { article } = Astro.props;
+const shots = article.pricingShots ?? [];
+if (!shots.length) return;
+---
+<section class="not-prose">
+  <div class="mb-5">
+    <span class="text-sm font-semibold uppercase tracking-wide text-brand">Straight from the source</span>
+    <h2 class="mt-1 text-2xl font-semibold sm:text-3xl">Live pricing pages</h2>
+    <p class="mt-1 max-w-prose text-muted">The real plans, captured from each vendor's own pricing page. Prices change, so treat these as a 2026 snapshot and confirm before you buy.</p>
+  </div>
+  <div class="grid gap-5 lg:grid-cols-2">
+    {shots.map((s: any) => (
+      <figure class="overflow-hidden rounded-xl2 border border-border bg-surface shadow-card">
+        <div class="flex items-center gap-1.5 border-b border-border bg-surface-2 px-3 py-2.5">
+          <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-amber-400/70"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/70"></span>
+          {s.browser && <span class="ml-2 truncate rounded-md bg-bg px-2 py-0.5 text-[11px] text-muted">{s.browser}</span>}
+        </div>
+        <a href={`https://${s.browser}`} target="_blank" rel="nofollow noopener" class="block max-h-[420px] overflow-hidden">
+          <img src={s.src} alt={s.alt ?? s.caption} loading="lazy" class="w-full" />
+        </a>
+        <figcaption class="border-t border-border px-3 py-2 text-xs text-muted">{s.caption}</figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

@@ -49,6 +49,10 @@ const articleSchema = z.object({
   updatedDate: z.coerce.date().optional(),
   demo: z.boolean().default(false), // marks fake-data demo pages
   heroNote: z.string().optional(), // honest one-liner under the versus hero (HTML <strong> allowed)
+  // Real pricing-page screenshots shown under the price calculator.
+  pricingShots: z
+    .array(z.object({ src: z.string(), alt: z.string().optional(), caption: z.string(), browser: z.string().optional() }))
+    .optional(),
   quickPick: z.object({
     overall: z.string(), // product id
     budget: z.string(),
