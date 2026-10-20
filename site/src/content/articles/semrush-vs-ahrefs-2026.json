@@ -44,6 +44,7 @@
         { "plan": "Guru", "price": "$249.95/mo", "note": "1,500 kw" },
         { "plan": "Business", "price": "$499.95/mo", "note": "5,000 kw" }
       ],
+      "addons": [{ "label": "Local SEO add-on", "price": 50 }],
       "affiliateUrl": "https://www.semrush.com/?ref=YOUR_SEMRUSH_AFFILIATE_LINK",
       "review": [
         "Semrush is less an SEO tool and more a full marketing cockpit. Alongside the usual rank tracking, site audits and keyword research, you get PPC research, a content marketing platform, local listing management and social tools. If your work spans more than organic search — or you run SEO for clients — that breadth is the whole point.",

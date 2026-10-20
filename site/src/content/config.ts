@@ -26,6 +26,7 @@ const product = z.object({
   pros: z.array(z.string()).min(2),
   cons: z.array(z.string()).min(1), // cons are MANDATORY (honesty + quality gate)
   pricing: z.array(pricing).default([]),
+  addons: z.array(z.object({ label: z.string(), price: z.number() })).optional(), // monthly add-on $, for the price calculator
   promoCode: z.string().optional(),
   affiliateUrl: z.string(), // final destination; site links go through /go/{id}
   review: z.array(z.string()).min(1), // paragraphs
