@@ -58,8 +58,9 @@ const catTitle = categories[a.categorySlug]?.title ?? a.category;
         <span>Updated {fmt(a.updatedDate ?? a.publishDate)}</span>
         <span aria-hidden="true">·</span>
         <span>{a.products.length} tools tested</span>
+        <span aria-hidden="true">·</span>
+        <AffiliateDisclosure compact />
       </div>
-      <div class="mt-6"><AffiliateDisclosure /></div>
     </div>
 
     <!-- Body -->
