@@ -116,5 +116,27 @@
       "But this is a genuine \"depends.\" If your job is <strong>link building and pure SEO data</strong>, Ahrefs is the sharper, cleaner tool and arguably the better buy. Decide by your actual day-to-day, not the feature list: breadth → Semrush, backlink depth → Ahrefs."
     ]
   },
+  "scorecard": {
+    "rows": [
+      { "label": "Backlink data & accuracy", "a": 8.5, "b": 9.3, "note": "Ahrefs' Site Explorer is widely considered the most accurate referring-domain index — the link builder's default." },
+      { "label": "Keyword research", "a": 9.0, "b": 8.7, "note": "Very close. Semrush edges it for US keywords and PPC; Ahrefs is cleaner for pure SEO." },
+      { "label": "All-in-one features", "a": 9.5, "b": 6.0, "note": "Semrush adds PPC, content, local and social. Ahrefs is deliberately SEO-only." },
+      { "label": "Ease of use", "a": 7.8, "b": 9.0, "note": "Ahrefs' interface is simpler and faster to learn; Semrush has more to wade through." },
+      { "label": "Data size & freshness", "a": 8.8, "b": 8.8, "note": "Both maintain huge, frequently-updated databases. Effectively a tie." },
+      { "label": "Reporting & agency tools", "a": 9.2, "b": 7.5, "note": "Semrush's projects and white-label reports fit client work better." },
+      { "label": "Value for money", "a": 7.9, "b": 8.4, "note": "Ahrefs' $29 Starter is the cheapest entry; Semrush gives more but costs more." },
+      { "label": "International coverage", "a": 8.0, "b": 8.8, "note": "Ahrefs covers non-US markets more thoroughly." }
+    ]
+  },
+  "decision": {
+    "question": "Tap the thing you care about most and we'll point you to the right tool.",
+    "options": [
+      { "label": "Backlink analysis", "winnerId": "ahrefs", "why": "Ahrefs' Site Explorer has the most accurate backlink index — the go-to for link building and competitor link research." },
+      { "label": "All-in-one marketing", "winnerId": "semrush", "why": "Semrush bundles SEO, PPC, content and local in one platform — best if your work goes beyond organic search." },
+      { "label": "Lowest price to start", "winnerId": "ahrefs", "why": "Ahrefs' $29 Starter is the cheapest way in. Semrush starts at $139.95/mo." },
+      { "label": "Agency / client work", "winnerId": "semrush", "why": "Semrush's projects, white-label reporting and breadth fit managing multiple clients." },
+      { "label": "Ease of use", "winnerId": "ahrefs", "why": "Ahrefs has the cleaner, faster interface — you'll be productive sooner." }
+    ]
+  },
   "related": []
 }

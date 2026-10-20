@@ -1,0 +1,72 @@
+---
+interface Props { article: any; }
+const { article } = Astro.props;
+const [a, b] = article.products;
+const rows = article.scorecard?.rows ?? [];
+const winsA = rows.filter((r: any) => r.a > r.b).length;
+const winsB = rows.filter((r: any) => r.b > r.a).length;
+const ties = rows.length - winsA - winsB;
+
+function bar(name: string, score: number, isWin: boolean) {
+  return { name, score, isWin };
+}
+---
+<section aria-label="Category scorecard" class="not-prose">
+  <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+    <h2 class="text-2xl font-semibold sm:text-3xl">Scorecard, category by category</h2>
+    <p class="text-sm text-muted">
+      <b class="text-ink">{a.name}</b> wins {winsA} · <b class="text-ink">{b.name}</b> wins {winsB}{ties ? ` · ${ties} tie${ties > 1 ? "s" : ""}` : ""}
+    </p>
+  </div>
+
+  <div class="overflow-hidden rounded-xl2 border border-border">
+    {rows.map((r: any, i: number) => {
+      const bars = [bar(a.name, r.a, r.a >= r.b), bar(b.name, r.b, r.b >= r.a)];
+      const tie = r.a === r.b;
+      return (
+        <div class={`score-row grid gap-x-6 gap-y-2 p-4 sm:grid-cols-[180px_1fr] sm:p-5 ${i % 2 ? "bg-surface-2/40" : ""}`}>
+          <div class="flex items-center justify-between sm:block">
+            <span class="font-semibold">{r.label}</span>
+            {!tie && (
+              <span class="badge mt-1 inline-flex bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                ✓ {r.a > r.b ? a.name : b.name}
+              </span>
+            )}
+            {tie && <span class="badge mt-1 inline-flex bg-surface-2 text-muted">Tie</span>}
+          </div>
+          <div class="flex flex-col justify-center gap-2.5">
+            {bars.map((bz) => (
+              <div class="flex items-center gap-3">
+                <span class="w-20 shrink-0 text-xs font-medium text-muted">{bz.name}</span>
+                <div class="relative h-3 flex-1 overflow-hidden rounded-full bg-surface-2">
+                  <div
+                    class={`score-fill absolute inset-y-0 left-0 rounded-full ${bz.isWin && !tie ? "bg-emerald-500" : "bg-brand/40"}`}
+                    style={`--target:${bz.score * 10}%`}
+                  ></div>
+                </div>
+                <span class="w-9 shrink-0 text-right text-sm font-bold tabular-nums">{bz.score.toFixed(1)}</span>
+              </div>
+            ))}
+            {r.note && <p class="mt-0.5 text-xs leading-relaxed text-muted">{r.note}</p>}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+
+  <style>
+    .score-fill { width: 0; transition: width 900ms cubic-bezier(0.22, 1, 0.36, 1); }
+    .score-row.in .score-fill { width: var(--target); }
+    @media (prefers-reduced-motion: reduce) { .score-fill { transition: none; width: var(--target); } }
+  </style>
+  <script is:inline>
+    (() => {
+      const rows = document.querySelectorAll(".score-row");
+      if (!("IntersectionObserver" in window)) { rows.forEach((r) => r.classList.add("in")); return; }
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      }, { threshold: 0.35 });
+      rows.forEach((r) => io.observe(r));
+    })();
+  </script>
+</section>

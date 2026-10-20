@@ -4,6 +4,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import AffiliateDisclosure from "../../components/AffiliateDisclosure.astro";
 import QuickPick from "../../components/QuickPick.astro";
+import VersusHero from "../../components/VersusHero.astro";
+import ScoreBars from "../../components/ScoreBars.astro";
+import DecisionHelper from "../../components/DecisionHelper.astro";
 import ComparisonTable from "../../components/ComparisonTable.astro";
 import ProductReview from "../../components/ProductReview.astro";
 import HowToChoose from "../../components/HowToChoose.astro";
@@ -56,7 +59,8 @@ const catTitle = categories[a.categorySlug]?.title ?? a.category;
 
     <!-- Body -->
     <div class="container-wide mt-12 flex flex-col gap-14 pb-10">
-      <QuickPick article={a} />
+      {a.pageType === "versus" && a.products.length === 2 ? <VersusHero article={a} /> : <QuickPick article={a} />}
+      {a.scorecard && <ScoreBars article={a} />}
       <ComparisonTable article={a} />
 
       <section class="not-prose">
@@ -67,6 +71,7 @@ const catTitle = categories[a.categorySlug]?.title ?? a.category;
       </section>
 
       <HowToChoose data={a.howToChoose} />
+      {a.decision && <DecisionHelper article={a} />}
       <FAQ faq={a.faq} />
       <FinalVerdict article={a} />
       <RelatedPosts articles={related} />

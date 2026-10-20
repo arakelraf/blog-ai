@@ -1,0 +1,56 @@
+---
+import { go } from "../lib/site";
+interface Props { article: any; }
+const { article } = Astro.props;
+const d = article.decision;
+if (!d) return;
+const byId = (id: string) => article.products.find((p: any) => p.id === id);
+// Precompute recommendation data per option for the client.
+const recs = d.options.map((o: any) => {
+  const p = byId(o.winnerId);
+  return { label: o.label, name: p?.name, why: o.why, href: go(p?.id ?? "", article.slug, "decision") };
+});
+---
+<section aria-label="Which should you pick" class="not-prose">
+  <div class="overflow-hidden rounded-xl2 border border-border bg-gradient-to-br from-brand/8 to-surface-2 p-6 sm:p-8">
+    <h2 class="text-2xl font-semibold sm:text-3xl">Not sure? Pick what matters most.</h2>
+    <p class="mt-2 text-muted">{d.question}</p>
+
+    <div class="mt-5 flex flex-wrap gap-2" id="dh-options">
+      {recs.map((r: any, i: number) => (
+        <button type="button" data-i={i} class="dh-btn rounded-full border border-border bg-surface px-4 py-2 text-sm font-semibold transition-colors hover:border-brand hover:text-brand">
+          {r.label}
+        </button>
+      ))}
+    </div>
+
+    <div id="dh-result" class="mt-5 hidden rounded-xl2 border border-border bg-surface p-5">
+      <p class="text-xs font-semibold uppercase tracking-wide text-brand">Our pick for you</p>
+      <p id="dh-name" class="mt-1 text-xl font-bold"></p>
+      <p id="dh-why" class="mt-1 text-sm text-muted"></p>
+      <a id="dh-cta" href="#" rel="sponsored nofollow" target="_blank" class="btn-cta group mt-4">
+        <span class="inline-flex items-center gap-1.5">Get <span id="dh-cta-name"></span> <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span></span>
+      </a>
+    </div>
+
+    <script type="application/json" id="dh-data" set:html={JSON.stringify(recs)}></script>
+    <script is:inline>
+      (() => {
+        const data = JSON.parse(document.getElementById("dh-data").textContent);
+        const result = document.getElementById("dh-result");
+        document.querySelectorAll(".dh-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll(".dh-btn").forEach((b) => b.classList.remove("border-brand", "text-brand", "bg-brand/5"));
+            btn.classList.add("border-brand", "text-brand", "bg-brand/5");
+            const r = data[Number(btn.dataset.i)];
+            document.getElementById("dh-name").textContent = r.name;
+            document.getElementById("dh-why").textContent = r.why;
+            document.getElementById("dh-cta-name").textContent = r.name;
+            document.getElementById("dh-cta").href = r.href;
+            result.classList.remove("hidden");
+          });
+        });
+      })();
+    </script>
+  </div>
+</section>

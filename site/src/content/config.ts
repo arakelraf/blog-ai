@@ -67,6 +67,23 @@ const articleSchema = z.object({
   faq: z.array(z.object({ q: z.string(), a: z.string() })).min(3),
   finalVerdict: z.object({ winnerId: z.string(), body: z.array(z.string()).min(1) }),
   related: z.array(z.string()).default([]),
+
+  // Optional rich blocks (mainly for versus pages).
+  // scorecard: per-category 0-10 scores for product[0] (a) vs product[1] (b).
+  scorecard: z
+    .object({
+      rows: z
+        .array(z.object({ label: z.string(), a: z.number(), b: z.number(), note: z.string().optional() }))
+        .min(2),
+    })
+    .optional(),
+  // decision: an interactive "what matters most to you → pick" helper.
+  decision: z
+    .object({
+      question: z.string(),
+      options: z.array(z.object({ label: z.string(), winnerId: z.string(), why: z.string() })).min(2),
+    })
+    .optional(),
 });
 
 export const articles = defineCollection({ type: "data", schema: articleSchema });

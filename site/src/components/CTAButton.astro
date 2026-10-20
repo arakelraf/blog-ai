@@ -2,18 +2,25 @@
 interface Props {
   href: string;
   label?: string;
+  sub?: string; // small line under the label, e.g. "from $29/mo"
   variant?: "cta" | "ghost";
   small?: boolean;
+  block?: boolean; // full width
 }
-const { href, label = "Check price", variant = "cta", small = false } = Astro.props;
-const cls = variant === "cta" ? "btn-cta" : "btn-ghost";
+const { href, label = "Check price", sub, variant = "cta", small = false, block = false } = Astro.props;
+const base = variant === "cta" ? "btn-cta" : "btn-ghost";
 ---
 <a
   href={href}
   rel="sponsored nofollow"
   target="_blank"
-  class={`${cls} ${small ? "px-4 py-2 text-xs" : ""}`}
+  class={`group ${base} ${small ? "px-4 py-2 text-xs" : ""} ${block ? "w-full" : ""}`}
 >
-  {label}
-  <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">→</span>
+  <span class="flex flex-col items-start leading-tight">
+    <span class="inline-flex items-center gap-1.5">
+      {label}
+      <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+    </span>
+    {sub && <span class="text-[11px] font-medium opacity-80">{sub}</span>}
+  </span>
 </a>
