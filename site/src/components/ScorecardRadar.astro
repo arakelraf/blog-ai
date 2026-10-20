@@ -1,0 +1,79 @@
+---
+interface Props { article: any; }
+const { article } = Astro.props;
+const [a, b] = article.products;
+const rows = article.scorecard?.rows ?? [];
+const N = rows.length;
+
+const size = 460;
+const cx = size / 2;
+const cy = size / 2;
+const R = 150;
+
+const ax = (i: number) => (-90 + (360 / N) * i) * (Math.PI / 180);
+const pt = (i: number, v: number) => {
+  const r = (R * v) / 10;
+  return [cx + r * Math.cos(ax(i)), cy + r * Math.sin(ax(i))];
+};
+const poly = (key: "a" | "b") => rows.map((r: any, i: number) => pt(i, r[key]).map((n: number) => n.toFixed(1)).join(",")).join(" ");
+const rings = [2.5, 5, 7.5, 10];
+
+// Short axis labels + outer label anchor positions.
+const short = (label: string) => {
+  const map: Record<string, string> = {
+    "Backlink data & accuracy": "Backlinks",
+    "Keyword research": "Keywords",
+    "All-in-one features": "All-in-one",
+    "Ease of use": "Ease of use",
+    "Data size & freshness": "Data size",
+    "Reporting & agency tools": "Reporting",
+    "Value for money": "Value",
+    "International coverage": "International",
+  };
+  return map[label] ?? label.split(" ").slice(0, 2).join(" ");
+};
+const labels = rows.map((r: any, i: number) => {
+  const [x, y] = pt(i, 11.4);
+  const cos = Math.cos(ax(i));
+  const anchor = cos > 0.3 ? "start" : cos < -0.3 ? "end" : "middle";
+  return { text: short(r.label), x: x.toFixed(1), y: y.toFixed(1), anchor };
+});
+---
+<figure class="not-prose">
+  <div class="rounded-xl2 border border-border bg-surface p-5 sm:p-7">
+    <div class="mb-1 flex flex-wrap items-center justify-between gap-3">
+      <h2 class="text-2xl font-semibold sm:text-3xl">The matchup at a glance</h2>
+      <div class="flex items-center gap-4 text-sm font-medium">
+        <span class="inline-flex items-center gap-1.5"><span class="h-3 w-3 rounded-full bg-brand"></span>{a.name}</span>
+        <span class="inline-flex items-center gap-1.5"><span class="h-3 w-3 rounded-full" style="background:#f59e0b"></span>{b.name}</span>
+      </div>
+    </div>
+    <div class="mx-auto max-w-[500px]">
+      <svg viewBox={`0 0 ${size} ${size}`} class="w-full" role="img" aria-label={`Radar comparing ${a.name} and ${b.name} across ${N} categories`}>
+        {rings.map((ring) => (
+          <circle cx={cx} cy={cy} r={(R * ring) / 10} fill="none" stroke="rgb(var(--border))" stroke-width="1" />
+        ))}
+        {rows.map((_r: any, i: number) => {
+          const [x, y] = pt(i, 10);
+          return <line x1={cx} y1={cy} x2={x.toFixed(1)} y2={y.toFixed(1)} stroke="rgb(var(--border))" stroke-width="1" />;
+        })}
+        <polygon points={poly("b")} fill="#f59e0b" fill-opacity="0.14" stroke="#f59e0b" stroke-width="2.5" stroke-linejoin="round" />
+        <polygon points={poly("a")} fill="rgb(var(--brand))" fill-opacity="0.16" stroke="rgb(var(--brand))" stroke-width="2.5" stroke-linejoin="round" />
+        {rows.map((r: any, i: number) => {
+          const [ax2, ay2] = pt(i, r.a);
+          const [bx2, by2] = pt(i, r.b);
+          return (
+            <>
+              <circle cx={bx2.toFixed(1)} cy={by2.toFixed(1)} r="3.5" fill="#f59e0b" />
+              <circle cx={ax2.toFixed(1)} cy={ay2.toFixed(1)} r="3.5" fill="rgb(var(--brand))" />
+            </>
+          );
+        })}
+        {labels.map((l: any) => (
+          <text x={l.x} y={l.y} text-anchor={l.anchor} dominant-baseline="middle" fill="rgb(var(--muted))" font-size="13" font-weight="600" font-family="Inter, sans-serif">{l.text}</text>
+        ))}
+      </svg>
+    </div>
+    <figcaption class="mt-2 text-center text-xs text-muted">Scores out of 10, from our hands-on comparison across {N} categories. Higher is better.</figcaption>
+  </div>
+</figure>

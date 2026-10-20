@@ -84,6 +84,23 @@ const articleSchema = z.object({
       options: z.array(z.object({ label: z.string(), winnerId: z.string(), why: z.string() })).min(2),
     })
     .optional(),
+  // sections: long-form in-depth prose (methodology + per-dimension deep dives).
+  // body is an array of paragraphs (HTML <strong> allowed). An optional pull quote and
+  // a verdict chip ("winner" product id + one-line takeaway) can anchor each section.
+  sections: z
+    .array(
+      z.object({
+        heading: z.string(),
+        kicker: z.string().optional(),
+        body: z.array(z.string()).min(1),
+        pullQuote: z.string().optional(),
+        takeaway: z.object({ winnerId: z.string(), text: z.string() }).optional(),
+        screenshot: z
+          .object({ caption: z.string(), credit: z.string().optional(), browser: z.string().optional() })
+          .optional(),
+      }),
+    )
+    .optional(),
 });
 
 export const articles = defineCollection({ type: "data", schema: articleSchema });

@@ -1,0 +1,50 @@
+---
+interface Props { article: any; }
+const { article } = Astro.props;
+const [a, b] = article.products;
+const num = (s: string) => Number(String(s).replace(/[^0-9.]/g, "")) || 0;
+const colorFor = (i: number) => (i === 0 ? "rgb(var(--brand))" : "#f59e0b");
+
+const groups = [a, b].map((p: any, pi: number) => ({
+  name: p.name,
+  color: colorFor(pi),
+  bars: (p.pricing ?? []).map((t: any) => ({ plan: t.plan, price: num(t.price), label: t.price.replace(/\/mo$/, ""), note: t.note })),
+}));
+const max = Math.max(...groups.flatMap((g) => g.bars.map((x: any) => x.price)), 1);
+---
+<figure class="not-prose">
+  <div class="rounded-xl2 border border-border bg-surface p-5 sm:p-7">
+    <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
+      <div>
+        <h2 class="text-2xl font-semibold sm:text-3xl">What you'll actually pay</h2>
+        <p class="mt-1 text-sm text-muted">Monthly list price per plan. Annual billing is usually cheaper — confirm current pricing on each site.</p>
+      </div>
+      <div class="flex items-center gap-4 text-sm font-medium">
+        <span class="inline-flex items-center gap-1.5"><span class="h-3 w-3 rounded-full bg-brand"></span>{a.name}</span>
+        <span class="inline-flex items-center gap-1.5"><span class="h-3 w-3 rounded-full" style="background:#f59e0b"></span>{b.name}</span>
+      </div>
+    </div>
+
+    <div class="grid gap-x-8 gap-y-6 sm:grid-cols-2">
+      {groups.map((g) => (
+        <div>
+          <p class="mb-3 text-sm font-bold" style={`color:${g.color}`}>{g.name}</p>
+          <div class="flex flex-col gap-3">
+            {g.bars.map((x: any) => (
+              <div>
+                <div class="mb-1 flex items-baseline justify-between text-sm">
+                  <span class="font-semibold">{x.plan}</span>
+                  <span class="font-bold tabular-nums">{x.label}<span class="text-xs font-normal text-muted">/mo</span></span>
+                </div>
+                <div class="h-3 overflow-hidden rounded-full bg-surface-2">
+                  <div class="h-full rounded-full" style={`width:${Math.max((x.price / max) * 100, 4)}%;background:${g.color}`}></div>
+                </div>
+                {x.note && <p class="mt-1 text-[11px] text-muted">{x.note}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</figure>

@@ -6,6 +6,9 @@ import AffiliateDisclosure from "../../components/AffiliateDisclosure.astro";
 import QuickPick from "../../components/QuickPick.astro";
 import VersusHero from "../../components/VersusHero.astro";
 import ScoreBars from "../../components/ScoreBars.astro";
+import ScorecardRadar from "../../components/ScorecardRadar.astro";
+import PricingChart from "../../components/PricingChart.astro";
+import DeepDive from "../../components/DeepDive.astro";
 import DecisionHelper from "../../components/DecisionHelper.astro";
 import ComparisonTable from "../../components/ComparisonTable.astro";
 import ProductReview from "../../components/ProductReview.astro";
@@ -60,7 +63,10 @@ const catTitle = categories[a.categorySlug]?.title ?? a.category;
     <!-- Body -->
     <div class="container-wide mt-12 flex flex-col gap-14 pb-10">
       {a.pageType === "versus" && a.products.length === 2 ? <VersusHero article={a} /> : <QuickPick article={a} />}
+      {a.scorecard && <ScorecardRadar article={a} />}
       {a.scorecard && <ScoreBars article={a} />}
+      {a.sections && a.sections.length > 0 && <DeepDive article={a} />}
+      <PricingChart article={a} />
       <ComparisonTable article={a} />
 
       <section class="not-prose">

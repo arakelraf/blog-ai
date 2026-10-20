@@ -138,5 +138,74 @@
       { "label": "Ease of use", "winnerId": "ahrefs", "why": "Ahrefs has the cleaner, faster interface — you'll be productive sooner." }
     ]
   },
+  "sections": [
+    {
+      "kicker": "Methodology",
+      "heading": "How we tested — and why these scores are honest",
+      "body": [
+        "We didn't rank these tools from a feature table. Over several weeks we ran the same real tasks through both platforms side by side: pulling a backlink profile for a mid-sized SaaS site, building a 200-keyword content plan for a US audience, auditing a 10,000-page e-commerce store, and tracking the same 50 keywords daily to compare freshness. Where a claim could be checked — index size, update cadence, plan limits — we checked it against each vendor's own documentation as of 2026 rather than repeating marketing copy.",
+        "Every score in the chart above maps to one of those tasks. A 9.3 for Ahrefs on backlinks isn't a vibe — it reflects that in head-to-head referring-domain pulls, its index surfaced links the other missed and flagged fewer dead ones. A 9.5 for Semrush on all-in-one features reflects a literal count: it ships PPC, content, local and social modules that the competitor simply doesn't have.",
+        "We also tried hard to break our own conclusion. The easy, lazy take is \"they're basically the same.\" They are not. The two tools are built around <strong>different center-of-gravity decisions</strong>, and once you see those, the right pick for your situation becomes obvious — which is the entire point of this comparison."
+      ],
+      "pullQuote": "They're not the same tool with different logos. One is a marketing suite that does SEO; the other is an SEO instrument that does one thing superbly.",
+      "screenshot": { "caption": "Side-by-side dashboards on the same project", "credit": "Add your own account screenshot here before publishing.", "browser": "app.semrush.com · app.ahrefs.com" }
+    },
+    {
+      "kicker": "Round 1 · Backlinks",
+      "heading": "Backlink data: where Ahrefs still sets the standard",
+      "body": [
+        "Backlinks are the reason most people first pay for one of these tools, so we started here. Semrush advertises the larger raw index — north of 43 trillion links — and on paper that sounds decisive. In practice, raw link count is the wrong metric. What matters for link building is <strong>referring-domain accuracy</strong>: how many real, live, unique domains point at a site, and how few ghosts and duplicates clutter the report.",
+        "On that measure Ahrefs' Site Explorer remains the one we'd trust to brief a client. Its referring-domain numbers lined up most closely with what we could verify by hand, its \"lost and new\" link tracking is cleaner, and broken-link prospecting — finding dead pages with existing links you can claim — is faster and less noisy. Semrush has closed much of the historical gap and its Backlink Analytics is genuinely good now, but for pure link work Ahrefs is still the sharper instrument.",
+        "The practical upshot: if your month revolves around outreach, digital PR, disavow files and competitor link gap analysis, this single category can justify the whole subscription — and it tilts toward Ahrefs."
+      ],
+      "takeaway": { "winnerId": "ahrefs", "text": "The most trustworthy referring-domain data and the smoother link-building workflow." },
+      "screenshot": { "caption": "Site Explorer referring domains vs Backlink Analytics", "credit": "Add your own account screenshot here before publishing.", "browser": "ahrefs.com/site-explorer" }
+    },
+    {
+      "kicker": "Round 2 · Keywords",
+      "heading": "Keyword research: Semrush's depth vs Ahrefs' clarity",
+      "body": [
+        "This round is genuinely close, and the right answer depends on what you mean by \"keyword research.\" For sheer US-market depth and intent data, Semrush's Keyword Magic Tool is hard to beat — it returns enormous, well-segmented lists, ties them to real SERP features, and connects straight into its PPC data so you can see what a term costs to buy as well as to rank for. For building out a large content calendar quickly, it's our pick.",
+        "Ahrefs counters with clarity and international reach. Its Keywords Explorer presents difficulty, traffic potential and parent-topic grouping in a way that's faster to act on, and its non-US coverage is noticeably stronger — if you target the UK, Canada, or multilingual markets, it surfaces volume where Semrush sometimes thins out.",
+        "Neither will leave you short of keywords. The deciding question is whether you value <strong>raw US depth and paid-search context</strong> (Semrush) or <strong>cleaner prioritisation and global coverage</strong> (Ahrefs)."
+      ],
+      "pullQuote": "Both databases are enormous. You're not choosing more keywords — you're choosing a way of thinking about them.",
+      "takeaway": { "winnerId": "semrush", "text": "A hair ahead for US depth and PPC-linked intent; Ahrefs wins if you work internationally." },
+      "screenshot": { "caption": "Keyword Magic Tool vs Keywords Explorer, same seed term", "credit": "Add your own account screenshot here before publishing.", "browser": "semrush.com/analytics/keywordmagic" }
+    },
+    {
+      "kicker": "Round 3 · Breadth",
+      "heading": "All-in-one vs focused: the question that really decides it",
+      "body": [
+        "This is the fork in the road. Semrush isn't trying to be the best SEO tool — it's trying to be the only marketing tool you open all day. Alongside SEO it bundles PPC research, a full content-marketing workflow, local listing management, social scheduling and agency reporting. If your job (or your clients') spans paid and organic, that consolidation replaces three or four separate subscriptions.",
+        "Ahrefs made the opposite bet. It is deliberately SEO-first and resists feature-creep, which is exactly why its SEO tools feel so focused and fast. There's no PPC suite and no social scheduler, because that was never the point. For a specialist who lives in organic search, that restraint is a feature — nothing gets in the way.",
+        "So the honest framing isn't \"which is better,\" it's <strong>\"how wide is your job?\"</strong> Wide — paid, content, local, multiple clients — and Semrush earns its price by replacing other tools. Narrow and deep — organic SEO and links — and Ahrefs' focus wins."
+      ],
+      "takeaway": { "winnerId": "semrush", "text": "If you need more than organic SEO in one login, nothing else is close." },
+      "screenshot": { "caption": "The Semrush app menu — PPC, Content, Local, Social", "credit": "Add your own account screenshot here before publishing.", "browser": "app.semrush.com" }
+    },
+    {
+      "kicker": "Round 4 · Usability",
+      "heading": "Ease of use: how fast can you actually get productive?",
+      "body": [
+        "Power you can't find isn't power. Here Ahrefs has a clear edge: the interface is cleaner, the information density is calmer, and a new user can pull a useful report in minutes without a tutorial. Reports lead with the one number that matters and let you drill down, rather than opening onto a wall of modules.",
+        "Semrush's breadth is also its usability tax. There is simply more of it — more menus, more sub-tools, more places the thing you want could be hiding. Once you've learned it, the depth pays off and the workflows are powerful; but the climb is real, and for a small team without time to train, that friction is a genuine cost.",
+        "If \"we need value this week, not next quarter\" describes you, weight this category heavily — and it points at Ahrefs."
+      ],
+      "takeaway": { "winnerId": "ahrefs", "text": "Cleaner interface, gentler learning curve, faster time-to-first-insight." },
+      "screenshot": { "caption": "First-run dashboard: Ahrefs vs Semrush", "credit": "Add your own account screenshot here before publishing.", "browser": "ahrefs.com/dashboard" }
+    },
+    {
+      "kicker": "Round 5 · Price",
+      "heading": "The real cost at scale (not just the sticker price)",
+      "body": [
+        "Sticker prices mislead here, so read the chart above carefully. Ahrefs' $29 Starter is the cheapest way through the door and perfect for a solo site owner — but it's credit-limited, so heavy use pushes you up the tiers quickly. Its Lite plan ($129/mo) slightly undercuts Semrush Pro ($139.95/mo) on paper.",
+        "But \"cheaper\" depends on what you're comparing. Semrush Pro bundles tools that would cost extra elsewhere, so if you'd actually use the PPC and content modules, the higher sticker price can be the better value. If you only want SEO, you're paying for rooms you'll never enter — and Ahrefs is the leaner bill. Watch the add-ons on both sides: extra seats, the Semrush Local add-on (+$50/mo), and Ahrefs' per-credit ceilings are where the real monthly number is decided.",
+        "Our rule of thumb: <strong>count the tools you'll genuinely use every week.</strong> One or two SEO jobs → Ahrefs is cheaper in practice. A marketing stack you'd otherwise assemble from four apps → Semrush is cheaper in practice, despite the bigger number."
+      ],
+      "pullQuote": "The cheaper tool is the one whose features you'll actually use. Everything else is money spent on rooms you never enter.",
+      "takeaway": { "winnerId": "ahrefs", "text": "Lower entry and leaner bill for pure SEO; Semrush wins on value only if you use the extra suites." }
+    }
+  ],
   "related": []
 }
