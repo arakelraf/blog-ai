@@ -1,0 +1,6 @@
+# Pre-launch: block all crawling until real content + real domain are ready.
+# When launching: restore "Allow: /" and remove this block.
+User-agent: *
+Disallow: /
+
+Sitemap: https://arakelraf.github.io/blog-ai/sitemap.xml
