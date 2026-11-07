@@ -20,8 +20,8 @@ export default {
         gold: "rgb(var(--gold) / <alpha-value>)",
       },
       fontFamily: {
-        display: ['"Fraunces"', "Georgia", "serif"],
-        sans: ['"Inter"', "system-ui", "sans-serif"],
+        display: ['"Libre Bodoni"', "Georgia", "serif"],
+        sans: ['"Public Sans"', "system-ui", "sans-serif"],
       },
       maxWidth: {
         prose: "720px",

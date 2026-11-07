@@ -57,7 +57,7 @@ const catTitle = categories[a.categorySlug]?.title ?? a.category;
         {a.titleAccent && a.title.includes(a.titleAccent) ? (
           <>
             {a.title.slice(0, a.title.indexOf(a.titleAccent))}
-            <span class="bg-gradient-to-r from-brand to-[#f59e0b] bg-clip-text text-transparent">{a.titleAccent}</span>
+            <span class="bg-gradient-to-r from-cta to-[#f59e0b] bg-clip-text text-transparent">{a.titleAccent}</span>
             {a.title.slice(a.title.indexOf(a.titleAccent) + a.titleAccent.length)}
           </>
         ) : a.title}

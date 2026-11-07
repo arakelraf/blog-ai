@@ -1,45 +1,46 @@
 /* Design tokens — the single source of the visual identity.
+   System: Swiss Modernism 2.0 (ui-ux-pro-max) — editorial black + pink accent.
    Values are space-separated RGB channels so Tailwind's <alpha-value> works. */
 :root {
-  --bg: 250 249 246;        /* warm paper */
+  --bg: 250 250 250;        /* #FAFAFA near-white */
   --surface: 255 255 255;
-  --surface-2: 245 243 238;
-  --border: 226 222 214;
-  --ink: 24 23 28;          /* near-black, slightly warm */
-  --muted: 102 100 110;
-  --brand: 79 70 229;       /* indigo — editorial brand accent */
+  --surface-2: 244 244 245; /* zinc-100 panel */
+  --border: 228 228 231;    /* #E4E4E7 */
+  --ink: 9 9 11;            /* #09090B foreground */
+  --muted: 71 85 105;       /* #475569 muted-foreground */
+  --brand: 24 24 27;        /* #18181B editorial primary (structure/accents) */
   --brand-ink: 255 255 255;
-  --cta: 234 88 12;         /* vivid orange — action only */
-  --cta-ink: 255 255 255;
+  --cta: 236 72 153;        /* #EC4899 pink — action/accent only */
+  --cta-ink: 24 24 27;      /* dark text on pink (on-accent) */
   --gold: 202 138 4;        /* ratings / badges */
 }
 
 :root[data-theme="dark"] {
-  --bg: 14 14 17;
-  --surface: 24 24 29;
-  --surface-2: 32 32 39;
-  --border: 48 48 57;
-  --ink: 237 236 242;
-  --muted: 161 159 172;
-  --brand: 129 125 255;
-  --brand-ink: 17 17 22;
-  --cta: 251 146 60;
-  --cta-ink: 24 16 8;
+  --bg: 9 9 11;
+  --surface: 24 24 27;
+  --surface-2: 39 39 42;
+  --border: 63 63 70;
+  --ink: 250 250 250;
+  --muted: 161 161 170;
+  --brand: 244 244 245;     /* light structural accent on dark */
+  --brand-ink: 9 9 11;
+  --cta: 244 114 182;       /* #F472B6 brighter pink on dark */
+  --cta-ink: 9 9 11;
   --gold: 234 179 8;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: 14 14 17;
-    --surface: 24 24 29;
-    --surface-2: 32 32 39;
-    --border: 48 48 57;
-    --ink: 237 236 242;
-    --muted: 161 159 172;
-    --brand: 129 125 255;
-    --brand-ink: 17 17 22;
-    --cta: 251 146 60;
-    --cta-ink: 24 16 8;
+    --bg: 9 9 11;
+    --surface: 24 24 27;
+    --surface-2: 39 39 42;
+    --border: 63 63 70;
+    --ink: 250 250 250;
+    --muted: 161 161 170;
+    --brand: 244 244 245;
+    --brand-ink: 9 9 11;
+    --cta: 244 114 182;
+    --cta-ink: 9 9 11;
     --gold: 234 179 8;
   }
 }
