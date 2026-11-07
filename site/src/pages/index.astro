@@ -37,101 +37,103 @@ const icons: Record<string, string> = {
 };
 ---
 <BaseLayout title={site.name} description={site.description}>
-  <!-- Hero -->
+  <!-- Compact hero headline -->
   <section class="relative overflow-hidden border-b border-border">
-    <div class="pointer-events-none absolute -right-40 -top-32 h-[32rem] w-[32rem] rounded-full bg-brand/15 blur-3xl"></div>
-    <div class="pointer-events-none absolute -left-40 bottom-0 h-80 w-80 rounded-full bg-cta/10 blur-3xl"></div>
-    <div class="container-wide relative grid items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
-      <div>
-        <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-semibold text-muted">
-          <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span></span>
-          Independent · Hands-on tested
-        </p>
-        <h1 class="text-4xl font-bold leading-[1.05] sm:text-6xl">
-          The AI tools worth paying for <span class="bg-gradient-to-r from-ink to-cta bg-clip-text text-transparent">and the ones that aren't.</span>
-        </h1>
-        <p class="mt-6 max-w-xl prose-lead">{site.description}</p>
-        <div class="mt-8 flex flex-wrap items-center gap-3">
-          {feat && <a href={`/blog/${feat.slug}`} class="btn-cta">Read the latest verdict</a>}
-          <a href="/how-we-test" class="btn-ghost">How we test</a>
-        </div>
-        <!-- Trust row -->
-        <dl class="mt-10 flex flex-wrap gap-x-8 gap-y-4">
-          <div><dt class="font-display text-2xl font-bold">100%</dt><dd class="text-xs text-muted">Hands-on, no guesswork</dd></div>
-          <div><dt class="font-display text-2xl font-bold">0</dt><dd class="text-xs text-muted">Paid rankings, ever</dd></div>
-          <div><dt class="font-display text-2xl font-bold">Live</dt><dd class="text-xs text-muted">Pricing kept current</dd></div>
-        </dl>
+    <div class="pointer-events-none absolute -right-40 -top-32 h-[30rem] w-[30rem] rounded-full bg-cta/10 blur-3xl"></div>
+    <div class="container-wide relative py-14 sm:py-20">
+      <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-semibold text-muted">
+        <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span></span>
+        Independent · Hands-on tested
+      </p>
+      <h1 class="max-w-4xl text-4xl font-bold leading-[1.03] sm:text-[4rem]">
+        The AI tools worth paying for <span class="bg-gradient-to-r from-ink to-cta bg-clip-text text-transparent">and the ones that aren't.</span>
+      </h1>
+      <p class="mt-6 max-w-xl prose-lead">{site.description}</p>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        {feat && <a href={`/blog/${feat.slug}`} class="btn-cta">Read the latest verdict</a>}
+        <a href="/how-we-test" class="btn-ghost">How we test</a>
       </div>
+    </div>
+  </section>
 
-      <!-- Featured verdict card -->
+  <!-- Bento grid (ui-ux-pro-max: bento-box-grid) -->
+  <section class="container-wide py-12">
+    <div class="mb-7 flex items-end justify-between border-t border-ink/15 pt-5">
+      <div class="flex items-baseline gap-4">
+        <span class="font-display text-xl font-bold tabular-nums text-cta">01</span>
+        <h2 class="text-2xl font-semibold sm:text-3xl">Start here</h2>
+      </div>
+      <span class="hidden text-xs font-semibold uppercase tracking-[0.14em] text-muted sm:block">Verdicts · stats · categories</span>
+    </div>
+
+    <div class="grid auto-rows-[172px] grid-cols-2 gap-4 md:grid-cols-4">
+      <!-- Featured verdict — big 2x2 tile -->
       {feat && (
-        <a href={`/blog/${feat.slug}`} class="reveal group relative block rounded-xl2 border border-border bg-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-pop sm:p-7">
-          <div class="flex items-center justify-between">
-            <span class="inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-brand">★ Featured verdict</span>
+        <a href={`/blog/${feat.slug}`}
+           class="reveal group relative col-span-2 row-span-2 flex flex-col justify-between overflow-hidden rounded-[22px] border border-border bg-surface p-6 shadow-card transition-transform duration-300 hover:scale-[1.01]">
+          <div class="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-cta/10 blur-2xl"></div>
+          <div class="relative flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-cta/10 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-cta">★ Featured verdict</span>
             <span class="text-xs font-medium text-muted">{feat.category}</span>
           </div>
-          <div class="mt-5 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
-            <div class="flex flex-col items-center gap-2 text-center">
-              <Logo name={fa.name} size={44} />
+          <div class="relative my-4 grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+            <div class="flex flex-col items-center gap-1.5 text-center">
+              <Logo name={fa.name} size={40} />
               <span class="text-sm font-bold">{fa.name}</span>
               <span class="font-display text-2xl font-bold tabular-nums" style="color:rgb(var(--brand))">{saScore.toFixed(1)}</span>
             </div>
-            <span class="grid h-10 w-10 place-items-center rounded-full border border-border bg-bg font-display text-sm font-bold text-muted">VS</span>
-            <div class="flex flex-col items-center gap-2 text-center">
-              <Logo name={fb.name} size={44} />
+            <span class="grid h-9 w-9 place-items-center rounded-full border border-border bg-bg font-display text-xs font-bold text-muted">VS</span>
+            <div class="flex flex-col items-center gap-1.5 text-center">
+              <Logo name={fb.name} size={40} />
               <span class="text-sm font-bold">{fb.name}</span>
               <span class="font-display text-2xl font-bold tabular-nums" style="color:#f59e0b">{sbScore.toFixed(1)}</span>
             </div>
           </div>
-          <p class="mt-5 text-lg font-semibold leading-snug">{feat.title}</p>
-          <p class="mt-2 line-clamp-2 text-sm text-muted">{feat.metaDescription}</p>
-          <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
-            Read the full comparison
-            <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-          </span>
-        </a>
-      )}
-    </div>
-  </section>
-
-  <!-- Latest reviews -->
-  <section class="reveal container-wide py-14">
-    <div class="mb-7 flex items-end justify-between border-t border-ink/15 pt-5">
-      <div class="flex items-baseline gap-4">
-        <span class="font-display text-xl font-bold tabular-nums text-cta">01</span>
-        <h2 class="text-2xl font-semibold sm:text-3xl">Latest reviews</h2>
-      </div>
-      <span class="hidden text-xs font-semibold uppercase tracking-[0.14em] text-muted sm:block">Fresh verdicts</span>
-    </div>
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {latest.map((a) => <ArticleCard article={{ ...a.data, slug: a.id.replace(/\.json$/, "") }} />)}
-    </div>
-  </section>
-
-  <!-- Categories -->
-  <section class="reveal container-wide py-6 pb-20">
-    <div class="mb-7 flex items-end justify-between border-t border-ink/15 pt-5">
-      <div class="flex items-baseline gap-4">
-        <span class="font-display text-xl font-bold tabular-nums text-cta">02</span>
-        <h2 class="text-2xl font-semibold sm:text-3xl">Browse by category</h2>
-      </div>
-      <span class="hidden text-xs font-semibold uppercase tracking-[0.14em] text-muted sm:block">Pick a lane</span>
-    </div>
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {Object.entries(categories).map(([slug, c]) => (
-        <a href={`/categories/${slug}`} class="card group relative flex items-start gap-4 overflow-hidden p-5 transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-pop">
-          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-brand-ink">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={icons[slug] ?? icons["ai-seo"]}/></svg>
-          </span>
-          <div class="min-w-0">
-            <h3 class="font-semibold group-hover:text-brand">{c.title}</h3>
-            <p class="mt-0.5 text-sm text-muted">{c.blurb}</p>
-            <span class="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-brand">Explore
-              <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          <div class="relative">
+            <p class="font-display text-lg font-bold leading-snug sm:text-xl">{feat.title}</p>
+            <span class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-cta">
+              Read the full comparison
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
             </span>
           </div>
+        </a>
+      )}
+
+      <!-- Stat tiles -->
+      <div class="reveal flex flex-col justify-between rounded-[22px] border border-border bg-surface-2/60 p-5">
+        <span class="font-display text-4xl font-bold">100%</span>
+        <span class="text-sm text-muted">Hands-on tested. No guesswork, ever.</span>
+      </div>
+      <div class="reveal flex flex-col justify-between rounded-[22px] border border-border bg-surface-2/60 p-5">
+        <span class="font-display text-4xl font-bold">$0</span>
+        <span class="text-sm text-muted">Paid rankings. Reviews are never for sale.</span>
+      </div>
+
+      <!-- How we test — accent tile -->
+      <a href="/how-we-test" class="reveal group flex flex-col justify-between rounded-[22px] bg-cta p-5 text-cta-ink transition-transform duration-300 hover:scale-[1.02]">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v6l-5 9a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-9V3"/><path d="M8 3h8M6.5 15h11"/></svg>
+        <span class="inline-flex items-center gap-1.5 text-sm font-semibold">How we test <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+      </a>
+      <!-- Live pricing stat -->
+      <div class="reveal flex flex-col justify-between rounded-[22px] border border-border bg-surface-2/60 p-5">
+        <span class="font-display text-4xl font-bold">Live</span>
+        <span class="text-sm text-muted">Pricing re-checked against each vendor.</span>
+      </div>
+
+      <!-- Category tiles -->
+      {Object.entries(categories).map(([slug, c]) => (
+        <a href={`/categories/${slug}`}
+           class="reveal group flex flex-col justify-between rounded-[22px] border border-border bg-surface p-5 transition-transform duration-300 hover:scale-[1.02]">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-cta/10 text-cta transition-colors group-hover:bg-cta group-hover:text-cta-ink">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={icons[slug] ?? icons["ai-seo"]}/></svg>
+          </span>
+          <span class="flex items-center justify-between">
+            <span class="font-semibold group-hover:text-cta">{c.title}</span>
+            <span aria-hidden="true" class="text-muted transition-transform group-hover:translate-x-0.5">→</span>
+          </span>
         </a>
       ))}
     </div>
   </section>
+
 </BaseLayout>
