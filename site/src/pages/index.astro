@@ -2,30 +2,95 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ArticleCard from "../components/ArticleCard.astro";
+import Logo from "../components/Logo.astro";
 import { site, categories } from "../lib/site";
 
 const all = (await getCollection("articles")).sort(
   (a, b) => +new Date(b.data.publishDate) - +new Date(a.data.publishDate),
 );
 const latest = all.slice(0, 6);
+
+// Featured verdict for the hero (the newest comparison with two products).
+const featEntry = all.find((a) => a.data.products?.length >= 2) ?? all[0];
+const feat = featEntry
+  ? { ...featEntry.data, slug: featEntry.id.replace(/\.json$/, "") }
+  : null;
+const avg = (p: any, rows: any[], key: "a" | "b") =>
+  rows?.length ? rows.reduce((s, r) => s + r[key], 0) / rows.length : p.rating * 2;
+let fa: any, fb: any, saScore = 0, sbScore = 0, winnerName = "";
+if (feat) {
+  [fa, fb] = feat.products;
+  const rows = feat.scorecard?.rows ?? [];
+  saScore = Math.round(avg(fa, rows, "a") * 10) / 10;
+  sbScore = Math.round(avg(fb, rows, "b") * 10) / 10;
+  winnerName = (feat.products.find((p: any) => p.id === feat.quickPick?.overall) ?? fa).name;
+}
+
+// Line icons per category.
+const icons: Record<string, string> = {
+  "ai-writing": "M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z",
+  "ai-website-builders": "M3 9h18M9 21V9M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z",
+  "ai-seo": "M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM21 21l-4.3-4.3",
+  "ai-image": "M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1ZM8.5 11a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM21 15l-5-5L5 21",
+  "ai-video": "M15 10l4.5-2.6a1 1 0 0 1 1.5.9v7.4a1 1 0 0 1-1.5.9L15 14M3 6h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z",
+  "ai-chatbots": "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z",
+};
 ---
 <BaseLayout title={site.name} description={site.description}>
   <!-- Hero -->
   <section class="relative overflow-hidden border-b border-border">
-    <div class="pointer-events-none absolute -right-32 -top-24 h-96 w-96 rounded-full bg-brand/15 blur-3xl"></div>
-    <div class="container-wide relative py-16 sm:py-24">
-      <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-semibold text-muted">
-        <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Independent · Hands-on tested
-      </p>
-      <h1 class="max-w-3xl text-4xl font-bold leading-[1.05] sm:text-6xl">
-        The AI tools worth paying for — <span class="text-brand">and the ones that aren't.</span>
-      </h1>
-      <p class="mt-6 max-w-xl prose-lead">{site.description}</p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        {Object.entries(categories).slice(0, 4).map(([slug, c]) => (
-          <a href={`/categories/${slug}`} class="btn-ghost">{c.title}</a>
-        ))}
+    <div class="pointer-events-none absolute -right-40 -top-32 h-[32rem] w-[32rem] rounded-full bg-brand/15 blur-3xl"></div>
+    <div class="pointer-events-none absolute -left-40 bottom-0 h-80 w-80 rounded-full bg-cta/10 blur-3xl"></div>
+    <div class="container-wide relative grid items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
+      <div>
+        <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-semibold text-muted">
+          <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span></span>
+          Independent · Hands-on tested
+        </p>
+        <h1 class="text-4xl font-bold leading-[1.05] sm:text-6xl">
+          The AI tools worth paying for <span class="bg-gradient-to-r from-brand to-cta bg-clip-text text-transparent">and the ones that aren't.</span>
+        </h1>
+        <p class="mt-6 max-w-xl prose-lead">{site.description}</p>
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          {feat && <a href={`/blog/${feat.slug}`} class="btn-cta">Read the latest verdict</a>}
+          <a href="/how-we-test" class="btn-ghost">How we test</a>
+        </div>
+        <!-- Trust row -->
+        <dl class="mt-10 flex flex-wrap gap-x-8 gap-y-4">
+          <div><dt class="font-display text-2xl font-bold">100%</dt><dd class="text-xs text-muted">Hands-on, no guesswork</dd></div>
+          <div><dt class="font-display text-2xl font-bold">0</dt><dd class="text-xs text-muted">Paid rankings, ever</dd></div>
+          <div><dt class="font-display text-2xl font-bold">Live</dt><dd class="text-xs text-muted">Pricing kept current</dd></div>
+        </dl>
       </div>
+
+      <!-- Featured verdict card -->
+      {feat && (
+        <a href={`/blog/${feat.slug}`} class="group relative block rounded-xl2 border border-border bg-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-pop sm:p-7">
+          <div class="flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-brand">★ Featured verdict</span>
+            <span class="text-xs font-medium text-muted">{feat.category}</span>
+          </div>
+          <div class="mt-5 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
+            <div class="flex flex-col items-center gap-2 text-center">
+              <Logo name={fa.name} size={44} />
+              <span class="text-sm font-bold">{fa.name}</span>
+              <span class="font-display text-2xl font-bold tabular-nums" style="color:rgb(var(--brand))">{saScore.toFixed(1)}</span>
+            </div>
+            <span class="grid h-10 w-10 place-items-center rounded-full border border-border bg-bg font-display text-sm font-bold text-muted">VS</span>
+            <div class="flex flex-col items-center gap-2 text-center">
+              <Logo name={fb.name} size={44} />
+              <span class="text-sm font-bold">{fb.name}</span>
+              <span class="font-display text-2xl font-bold tabular-nums" style="color:#f59e0b">{sbScore.toFixed(1)}</span>
+            </div>
+          </div>
+          <p class="mt-5 text-lg font-semibold leading-snug">{feat.title}</p>
+          <p class="mt-2 line-clamp-2 text-sm text-muted">{feat.metaDescription}</p>
+          <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
+            Read the full comparison
+            <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </span>
+        </a>
+      )}
     </div>
   </section>
 
@@ -44,10 +109,17 @@ const latest = all.slice(0, 6);
     <h2 class="mb-6 text-2xl font-semibold sm:text-3xl">Browse by category</h2>
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {Object.entries(categories).map(([slug, c]) => (
-        <a href={`/categories/${slug}`} class="card group flex flex-col gap-1.5 p-6 transition-all hover:-translate-y-1 hover:shadow-pop">
-          <h3 class="text-lg font-semibold group-hover:text-brand">{c.title}</h3>
-          <p class="text-sm text-muted">{c.blurb}</p>
-          <span class="mt-2 text-sm font-semibold text-brand">Explore →</span>
+        <a href={`/categories/${slug}`} class="card group relative flex items-start gap-4 overflow-hidden p-5 transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-pop">
+          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-brand-ink">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={icons[slug] ?? icons["ai-seo"]}/></svg>
+          </span>
+          <div class="min-w-0">
+            <h3 class="font-semibold group-hover:text-brand">{c.title}</h3>
+            <p class="mt-0.5 text-sm text-muted">{c.blurb}</p>
+            <span class="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-brand">Explore
+              <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </span>
+          </div>
         </a>
       ))}
     </div>
