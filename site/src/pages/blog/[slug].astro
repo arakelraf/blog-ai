@@ -20,6 +20,7 @@ import FAQ from "../../components/FAQ.astro";
 import FinalVerdict from "../../components/FinalVerdict.astro";
 import StickyCTA from "../../components/StickyCTA.astro";
 import RelatedPosts from "../../components/RelatedPosts.astro";
+import ArticleRail from "../../components/ArticleRail.astro";
 import { articleJsonLd } from "../../lib/schema";
 import { categories, abs } from "../../lib/site";
 
@@ -86,30 +87,56 @@ const catTitle = categories[a.categorySlug]?.title ?? a.category;
       </div>
     </div>
 
-    <!-- Body -->
-    <div class="container-wide mt-12 flex flex-col gap-14 pb-10">
-      {a.pageType === "versus" && a.products.length === 2 ? <VersusHero article={a} /> : <QuickPick article={a} />}
-      {a.scorecard && <ScorecardRadar article={a} />}
-      {a.scorecard && <ScoreBars article={a} />}
-      {a.scorecard && <ScoreWeights article={a} />}
-      {a.sections && a.sections.length > 0 && <DeepDive article={a} />}
-      <PriceCalculator article={a} />
-      <PricingChart article={a} />
-      {a.pricingShots && a.pricingShots.length > 0 && <PricingProof article={a} />}
-      <ComparisonTable article={a} />
+    <!-- Body: editorial two-column grid with a sticky section rail -->
+    <div class="container-wide mt-12 grid gap-10 pb-10 xl:grid-cols-[220px_minmax(0,1fr)]">
+      <ArticleRail items={[
+        { id: "sec-overview", label: "Head to head" },
+        { id: "sec-scores", label: "Scorecard" },
+        ...(a.sections && a.sections.length > 0 ? [{ id: "sec-deepdive", label: "The deep dive" }] : []),
+        { id: "sec-pricing", label: "Pricing" },
+        { id: "sec-compare", label: "Side by side" },
+        { id: "sec-reviews", label: "The reviews" },
+        { id: "sec-choose", label: "How to choose" },
+        { id: "sec-faq", label: "FAQ" },
+        { id: "sec-verdict", label: "Verdict" },
+      ]} />
 
-      <section class="not-prose">
-        <h2 class="mb-6 text-2xl font-semibold sm:text-3xl">The reviews, in depth</h2>
-        <div class="flex flex-col gap-6">
-          {a.products.map((p: any, i: number) => <ProductReview product={p} slug={slug} index={i + 1} />)}
-        </div>
-      </section>
+      <div class="flex min-w-0 flex-col gap-16">
+        <section id="sec-overview" class="scroll-mt-24">
+          {a.pageType === "versus" && a.products.length === 2 ? <VersusHero article={a} /> : <QuickPick article={a} />}
+        </section>
 
-      <HowToChoose data={a.howToChoose} />
-      {a.decision && <DecisionHelper article={a} />}
-      <FAQ faq={a.faq} />
-      <FinalVerdict article={a} />
-      <RelatedPosts articles={related} />
+        <section id="sec-scores" class="scroll-mt-24 flex flex-col gap-14">
+          {a.scorecard && <ScorecardRadar article={a} />}
+          {a.scorecard && <ScoreBars article={a} />}
+          {a.scorecard && <ScoreWeights article={a} />}
+        </section>
+
+        {a.sections && a.sections.length > 0 && (
+          <section id="sec-deepdive" class="scroll-mt-24"><DeepDive article={a} /></section>
+        )}
+
+        <section id="sec-pricing" class="scroll-mt-24 flex flex-col gap-14">
+          <PriceCalculator article={a} />
+          <PricingChart article={a} />
+          {a.pricingShots && a.pricingShots.length > 0 && <PricingProof article={a} />}
+        </section>
+
+        <section id="sec-compare" class="scroll-mt-24"><ComparisonTable article={a} /></section>
+
+        <section id="sec-reviews" class="not-prose scroll-mt-24">
+          <h2 class="mb-6 text-2xl font-semibold sm:text-3xl">The reviews, in depth</h2>
+          <div class="flex flex-col gap-6">
+            {a.products.map((p: any, i: number) => <ProductReview product={p} slug={slug} index={i + 1} />)}
+          </div>
+        </section>
+
+        <section id="sec-choose" class="scroll-mt-24"><HowToChoose data={a.howToChoose} /></section>
+        {a.decision && <DecisionHelper article={a} />}
+        <section id="sec-faq" class="scroll-mt-24"><FAQ faq={a.faq} /></section>
+        <section id="sec-verdict" class="scroll-mt-24"><FinalVerdict article={a} /></section>
+        <RelatedPosts articles={related} />
+      </div>
     </div>
   </article>
 

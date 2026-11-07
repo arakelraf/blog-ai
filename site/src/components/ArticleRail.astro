@@ -1,0 +1,60 @@
+---
+// Editorial reading aid: top progress bar + sticky "On this page" TOC with scroll-spy.
+interface Props { items: { id: string; label: string }[]; }
+const { items } = Astro.props;
+---
+<!-- Reading progress bar -->
+<div class="fixed inset-x-0 top-0 z-50 h-1 bg-transparent" aria-hidden="true">
+  <div id="read-progress" class="h-full w-0 origin-left bg-cta transition-[width] duration-75 ease-linear"></div>
+</div>
+
+<nav aria-label="On this page" class="hidden xl:block">
+  <div class="sticky top-24">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-muted">On this page</p>
+    <ol class="flex flex-col gap-1 border-l border-border" id="toc">
+      {items.map((it, i) => (
+        <li>
+          <a href={`#${it.id}`} data-toc-link={it.id}
+             class="-ml-px flex items-center gap-2 border-l-2 border-transparent py-1.5 pl-4 text-sm text-muted transition-colors hover:text-ink">
+            <span class="tabular-nums text-[11px] text-muted/70">{String(i + 1).padStart(2, "0")}</span>
+            <span>{it.label}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</nav>
+
+<script is:inline>
+  (() => {
+    const bar = document.getElementById("read-progress");
+    const article = document.querySelector("article");
+    const onScroll = () => {
+      if (!bar || !article) return;
+      const start = article.offsetTop;
+      const total = article.offsetHeight - window.innerHeight;
+      const p = total > 0 ? Math.min(Math.max((window.scrollY - start) / total, 0), 1) : 0;
+      bar.style.width = (p * 100).toFixed(2) + "%";
+    };
+    document.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    onScroll();
+
+    const links = [...document.querySelectorAll("[data-toc-link]")];
+    const byId = new Map(links.map((l) => [l.dataset.tocLink, l]));
+    const setActive = (id) => {
+      links.forEach((l) => {
+        const on = l.dataset.tocLink === id;
+        l.classList.toggle("border-cta", on);
+        l.classList.toggle("text-ink", on);
+        l.classList.toggle("font-semibold", on);
+        l.classList.toggle("text-muted", !on);
+      });
+    };
+    const io = new IntersectionObserver((entries) => {
+      const vis = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (vis[0]) setActive(vis[0].target.id);
+    }, { rootMargin: "-20% 0px -70% 0px", threshold: 0 });
+    links.forEach((l) => { const el = document.getElementById(l.dataset.tocLink); if (el) io.observe(el); });
+  })();
+</script>
