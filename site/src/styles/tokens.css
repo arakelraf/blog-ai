@@ -1,5 +1,5 @@
 /* Design tokens — the single source of the visual identity.
-   System: Swiss Modernism 2.0 (ui-ux-pro-max) — editorial black + pink accent.
+   System: Swiss Modernism 2.0 (ui-ux-pro-max) — editorial black + blue accent.
    Values are space-separated RGB channels so Tailwind's <alpha-value> works. */
 :root {
   --bg: 250 250 250;        /* #FAFAFA near-white */
@@ -8,10 +8,10 @@
   --border: 228 228 231;    /* #E4E4E7 */
   --ink: 9 9 11;            /* #09090B foreground */
   --muted: 71 85 105;       /* #475569 muted-foreground */
-  --brand: 24 24 27;        /* #18181B editorial primary (structure/accents) */
+  --brand: 37 99 235;       /* #2563EB blue-600 — accent (links, icons, data) */
   --brand-ink: 255 255 255;
-  --cta: 236 72 153;        /* #EC4899 pink — action/accent only */
-  --cta-ink: 24 24 27;      /* dark text on pink (on-accent) */
+  --cta: 37 99 235;         /* #2563EB blue — action; white text reads cleanly */
+  --cta-ink: 255 255 255;   /* white on blue (on-accent) */
   --gold: 202 138 4;        /* ratings / badges */
 }
 
@@ -22,10 +22,10 @@
   --border: 63 63 70;
   --ink: 250 250 250;
   --muted: 161 161 170;
-  --brand: 244 244 245;     /* light structural accent on dark */
+  --brand: 96 165 250;      /* #60A5FA lighter blue reads on dark */
   --brand-ink: 9 9 11;
-  --cta: 244 114 182;       /* #F472B6 brighter pink on dark */
-  --cta-ink: 9 9 11;
+  --cta: 37 99 235;         /* #2563EB keeps white text at AA on its own fill */
+  --cta-ink: 255 255 255;
   --gold: 234 179 8;
 }
 
@@ -37,10 +37,10 @@
     --border: 63 63 70;
     --ink: 250 250 250;
     --muted: 161 161 170;
-    --brand: 244 244 245;
+    --brand: 96 165 250;
     --brand-ink: 9 9 11;
-    --cta: 244 114 182;
-    --cta-ink: 9 9 11;
+    --cta: 37 99 235;
+    --cta-ink: 255 255 255;
     --gold: 234 179 8;
   }
 }

@@ -32,7 +32,28 @@
   }
 }
 
+/* ui-ux-pro-max gsap preset "Scroll Reveal (Subtle)" — vanilla, SEO-safe.
+   Only arms when JS adds .reveal-ready, so no-JS/crawlers see final state. */
+.reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  will-change: opacity, transform;
+}
+.reveal-ready .reveal.in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
 /* ui-ux-pro-max checklist: respect reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready .reveal,
+  .reveal-ready .reveal.in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

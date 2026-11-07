@@ -48,7 +48,7 @@ const icons: Record<string, string> = {
           Independent · Hands-on tested
         </p>
         <h1 class="text-4xl font-bold leading-[1.05] sm:text-6xl">
-          The AI tools worth paying for <span class="bg-gradient-to-r from-brand to-cta bg-clip-text text-transparent">and the ones that aren't.</span>
+          The AI tools worth paying for <span class="bg-gradient-to-r from-ink to-cta bg-clip-text text-transparent">and the ones that aren't.</span>
         </h1>
         <p class="mt-6 max-w-xl prose-lead">{site.description}</p>
         <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -65,7 +65,7 @@ const icons: Record<string, string> = {
 
       <!-- Featured verdict card -->
       {feat && (
-        <a href={`/blog/${feat.slug}`} class="group relative block rounded-xl2 border border-border bg-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-pop sm:p-7">
+        <a href={`/blog/${feat.slug}`} class="reveal group relative block rounded-xl2 border border-border bg-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-pop sm:p-7">
           <div class="flex items-center justify-between">
             <span class="inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-brand">★ Featured verdict</span>
             <span class="text-xs font-medium text-muted">{feat.category}</span>
@@ -95,7 +95,7 @@ const icons: Record<string, string> = {
   </section>
 
   <!-- Latest reviews -->
-  <section class="container-wide py-14">
+  <section class="reveal container-wide py-14">
     <div class="mb-7 flex items-end justify-between border-t border-ink/15 pt-5">
       <div class="flex items-baseline gap-4">
         <span class="font-display text-xl font-bold tabular-nums text-cta">01</span>
@@ -109,7 +109,7 @@ const icons: Record<string, string> = {
   </section>
 
   <!-- Categories -->
-  <section class="container-wide py-6 pb-20">
+  <section class="reveal container-wide py-6 pb-20">
     <div class="mb-7 flex items-end justify-between border-t border-ink/15 pt-5">
       <div class="flex items-baseline gap-4">
         <span class="font-display text-xl font-bold tabular-nums text-cta">02</span>

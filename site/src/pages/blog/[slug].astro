@@ -102,39 +102,39 @@ const catTitle = categories[a.categorySlug]?.title ?? a.category;
       ]} />
 
       <div class="flex min-w-0 flex-col gap-16">
-        <section id="sec-overview" class="scroll-mt-24">
+        <section id="sec-overview" class="reveal scroll-mt-24">
           {a.pageType === "versus" && a.products.length === 2 ? <VersusHero article={a} /> : <QuickPick article={a} />}
         </section>
 
-        <section id="sec-scores" class="scroll-mt-24 flex flex-col gap-14">
+        <section id="sec-scores" class="reveal scroll-mt-24 flex flex-col gap-14">
           {a.scorecard && <ScorecardRadar article={a} />}
           {a.scorecard && <ScoreBars article={a} />}
           {a.scorecard && <ScoreWeights article={a} />}
         </section>
 
         {a.sections && a.sections.length > 0 && (
-          <section id="sec-deepdive" class="scroll-mt-24"><DeepDive article={a} /></section>
+          <section id="sec-deepdive" class="reveal scroll-mt-24"><DeepDive article={a} /></section>
         )}
 
-        <section id="sec-pricing" class="scroll-mt-24 flex flex-col gap-14">
+        <section id="sec-pricing" class="reveal scroll-mt-24 flex flex-col gap-14">
           <PriceCalculator article={a} />
           <PricingChart article={a} />
           {a.pricingShots && a.pricingShots.length > 0 && <PricingProof article={a} />}
         </section>
 
-        <section id="sec-compare" class="scroll-mt-24"><ComparisonTable article={a} /></section>
+        <section id="sec-compare" class="reveal scroll-mt-24"><ComparisonTable article={a} /></section>
 
-        <section id="sec-reviews" class="not-prose scroll-mt-24">
+        <section id="sec-reviews" class="reveal not-prose scroll-mt-24">
           <h2 class="mb-6 text-2xl font-semibold sm:text-3xl">The reviews, in depth</h2>
           <div class="flex flex-col gap-6">
             {a.products.map((p: any, i: number) => <ProductReview product={p} slug={slug} index={i + 1} />)}
           </div>
         </section>
 
-        <section id="sec-choose" class="scroll-mt-24"><HowToChoose data={a.howToChoose} /></section>
+        <section id="sec-choose" class="reveal scroll-mt-24"><HowToChoose data={a.howToChoose} /></section>
         {a.decision && <DecisionHelper article={a} />}
-        <section id="sec-faq" class="scroll-mt-24"><FAQ faq={a.faq} /></section>
-        <section id="sec-verdict" class="scroll-mt-24"><FinalVerdict article={a} /></section>
+        <section id="sec-faq" class="reveal scroll-mt-24"><FAQ faq={a.faq} /></section>
+        <section id="sec-verdict" class="reveal scroll-mt-24"><FinalVerdict article={a} /></section>
         <RelatedPosts articles={related} />
       </div>
     </div>

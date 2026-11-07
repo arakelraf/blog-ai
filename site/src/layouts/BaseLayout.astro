@@ -56,6 +56,12 @@ const navItems = Object.entries(categories).slice(0, 5).map(([slug, c]) => ({ hr
         const t = localStorage.getItem("theme");
         if (t) document.documentElement.setAttribute("data-theme", t);
       } catch {}
+      // Arm scroll-reveal only with JS + motion allowed (crawlers/no-JS see final state)
+      try {
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          document.documentElement.classList.add("reveal-ready");
+        }
+      } catch {}
     </script>
   </head>
   <body class="min-h-screen flex flex-col antialiased">
@@ -121,6 +127,20 @@ const navItems = Object.entries(categories).slice(0, 5).map(([slug, c]) => ({ hr
     </script>
 
     <main class="flex-1"><slot /></main>
+    <script is:inline>
+      (() => {
+        if (!document.documentElement.classList.contains("reveal-ready")) return;
+        const els = document.querySelectorAll(".reveal");
+        if (!els.length || !("IntersectionObserver" in window)) {
+          els.forEach((el) => el.classList.add("in"));
+          return;
+        }
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+        }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+        els.forEach((el) => io.observe(el));
+      })();
+    </script>
 
     <footer class="mt-20 border-t border-border bg-surface-2/40">
       <div class="container-wide grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
