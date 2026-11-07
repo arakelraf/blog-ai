@@ -23,6 +23,28 @@
   a {
     color: inherit;
   }
+  /* ui-ux-pro-max checklist: every control reads as clickable */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  label:has(input[type="checkbox"]),
+  summary {
+    cursor: pointer;
+  }
+}
+
+/* ui-ux-pro-max checklist: respect reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0 !important;
+  }
 }
 
 @layer components {
