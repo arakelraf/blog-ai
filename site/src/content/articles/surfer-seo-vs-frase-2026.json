@@ -1,0 +1,201 @@
+{
+  "title": "Surfer SEO vs Frase (2026): Which Content Tool Actually Ranks?",
+  "titleAccent": "Actually Ranks?",
+  "metaTitle": "Surfer SEO vs Frase 2026: Honest Comparison",
+  "metaDescription": "We compare Surfer SEO and Frase on content optimization, SERP research, AI writing and price, and say exactly which one to pick for your workflow in 2026.",
+  "year": 2026,
+  "promise": "Two content tools, one honest verdict.",
+  "lead": "Both promise content that ranks, but they bet on different things. Surfer leans on deep on-page optimization; Frase leans on fast research and AI drafting. We ran the same jobs through each and compared them on optimization, SERP research, AI writing, and price. Prices below need a quick confirm on each site before you buy.",
+  "category": "AI SEO",
+  "categorySlug": "ai-seo",
+  "pageType": "versus",
+  "author": "Stacked Editorial",
+  "authorSlug": "editorial",
+  "publishDate": "2026-11-07",
+  "updatedDate": "2026-11-07",
+  "demo": false,
+  "heroNote": "Scores are averaged across 8 categories. Heads-up: <strong>Frase wins more categories</strong> (research, AI drafting, ease, value). Surfer edges the overall average because its optimization and NLP-term depth are so far ahead. Read it as a split by workflow, not a blowout.",
+  "quickPick": { "overall": "surfer", "budget": "frase", "premium": "surfer" },
+  "products": [
+    {
+      "id": "surfer",
+      "name": "Surfer SEO",
+      "role": "top_pick",
+      "rating": 4.6,
+      "tagline": "The on-page optimization engine",
+      "award": "Best for optimization",
+      "forWho": "SEO teams and agencies who want precise, SERP-driven on-page optimization and auditing.",
+      "keyFeatures": [
+        "Content Editor that scores drafts against the live SERP in real time",
+        "Deep NLP term lists, structure and length targets",
+        "Site audit, SERP analyzer, and WordPress / Google Docs integrations"
+      ],
+      "pros": [
+        "Best-in-class on-page optimization, the reason most SEOs buy it",
+        "Rich NLP term and structure data pulled from the ranking pages",
+        "Strong integrations (Google Docs, WordPress, Jasper) and auditing"
+      ],
+      "cons": [
+        "Pricier entry than Frase, the lower tiers cap articles",
+        "AI writing is secondary to optimization, not its core strength",
+        "Can feel like a lot of knobs for a solo blogger"
+      ],
+      "pricing": [
+        { "plan": "Essential", "price": "$99/mo", "note": "verify current · ~30 articles" },
+        { "plan": "Scale", "price": "$219/mo", "note": "more articles + seats" }
+      ],
+      "affiliateUrl": "https://surferseo.com/?ref=YOUR_SURFER_AFFILIATE_LINK",
+      "review": [
+        "Surfer is built around one idea done very well: take what already ranks and tell you exactly how to match it. The Content Editor scores your draft live against the top SERP results on terms, headings, length and structure. For hitting a target before you publish, nothing else is this precise.",
+        "Beyond the editor you get a SERP analyzer, a site audit, and solid integrations into Google Docs, WordPress and even Jasper. For an agency pushing volume with consistent quality, that pipeline is the whole point.",
+        "The trade-offs are price and focus. Entry plans cost more than Frase and cap how many articles you can optimize, and the AI writer is a helper, not the star. If your job is optimization precision, that focus is a feature."
+      ]
+    },
+    {
+      "id": "frase",
+      "name": "Frase",
+      "role": "premium",
+      "rating": 4.4,
+      "tagline": "Research, briefs and AI drafting in one",
+      "award": "Best for research + AI drafting",
+      "forWho": "Writers and small teams who want fast SERP research, briefs and AI drafts in one cheap tool.",
+      "keyFeatures": [
+        "SERP research that builds briefs and outlines in seconds",
+        "Built-in AI writer for outlines, intros and full drafts",
+        "Content optimization score with an affordable entry plan"
+      ],
+      "pros": [
+        "Fastest path from keyword to brief to first draft",
+        "AI writing is core, not an afterthought",
+        "Cheapest way in, the Solo plan is a few dollars a month"
+      ],
+      "cons": [
+        "Optimization depth trails Surfer's NLP term data",
+        "Advanced AI/optimization sits behind a paid Pro add-on",
+        "Fewer heavy-duty agency and audit features"
+      ],
+      "pricing": [
+        { "plan": "Solo", "price": "$15/mo", "note": "verify current · ~4 articles" },
+        { "plan": "Basic", "price": "$45/mo", "note": "~30 documents" },
+        { "plan": "Team", "price": "$115/mo", "note": "unlimited · 3 seats" }
+      ],
+      "addons": [{ "label": "Pro Add-on", "price": 35 }],
+      "affiliateUrl": "https://www.frase.io/?ref=YOUR_FRASE_AFFILIATE_LINK",
+      "review": [
+        "Frase starts a step earlier than Surfer. Point it at a keyword and it pulls the SERP, summarizes the ranking pages, and builds a brief and outline in seconds. For research and planning, it is genuinely fast.",
+        "It also writes. The built-in AI drafts outlines, intros and full sections, so you can go from keyword to first draft inside one tool. For solo writers and small teams juggling volume on a budget, that all-in-one flow is the draw.",
+        "Where it gives ground is optimization depth. Its scoring is good but not as granular as Surfer's NLP term lists, and the strongest AI and optimization features sit behind a paid Pro add-on. If links between research, writing and a fair price matter most, that is a fair trade."
+      ]
+    }
+  ],
+  "comparison": {
+    "columns": ["Best for", "Starting price", "Optimization", "AI writing", "Free / trial"],
+    "rows": [
+      { "productId": "surfer", "values": ["On-page precision, agencies", "$99/mo (Essential)", "Deepest NLP term data", "Helper, not core", "Free trial (verify)"] },
+      { "productId": "frase", "values": ["Research + drafting, budget", "$15/mo (Solo)", "Good, less granular", "Core feature", "Free trial, cheap entry"] }
+    ]
+  },
+  "howToChoose": {
+    "intro": "You rarely need both. Four questions settle it.",
+    "criteria": [
+      { "title": "What's the main job?", "body": "Squeeze the most ranking signal out of a draft → Surfer. Research and draft fast from scratch → Frase." },
+      { "title": "Solo or agency?", "body": "A solo writer on a budget is well served by Frase. Agencies pushing consistent optimization at volume lean Surfer." },
+      { "title": "Write or optimize?", "body": "If AI drafting is central to your flow, Frase. If you already write and need to optimize, Surfer." },
+      { "title": "Budget to start?", "body": "Frase's Solo plan is the cheapest way in. Surfer starts higher but goes deeper on optimization." }
+    ]
+  },
+  "faq": [
+    { "q": "Is Surfer or Frase better for SEO content?", "a": "For on-page optimization precision, Surfer. Its Content Editor scores drafts against the live SERP in more granular detail. For research, briefs and AI drafting in one place, Frase is the smoother, cheaper flow." },
+    { "q": "Which is better for AI writing?", "a": "Frase. AI drafting is a core feature, so going from keyword to first draft is faster. Surfer's AI writer is a helper layered on top of its optimization tools." },
+    { "q": "Which is cheaper?", "a": "Frase. Its Solo plan is a few dollars a month, far below Surfer's entry plan. Note Frase's strongest AI and optimization features need the paid Pro add-on, so compare the real configuration you'd use." },
+    { "q": "Do I need both Surfer and Frase?", "a": "Most people don't. Some teams research and draft in Frase, then do a final optimization pass in Surfer, but that's a budget choice, not a requirement." },
+    { "q": "Do they integrate with Google Docs or WordPress?", "a": "Surfer integrates with Google Docs and WordPress and offers a Jasper integration. Frase focuses on its own editor. Confirm current integrations on each site." },
+    { "q": "Can either replace a full SEO suite like Semrush or Ahrefs?", "a": "No. Surfer and Frase are content optimization and writing tools, not backlink or rank-tracking suites. Many teams pair one of them with Semrush or Ahrefs." }
+  ],
+  "finalVerdict": {
+    "winnerId": "surfer",
+    "body": [
+      "Be straight about the scores first: <strong>Frase wins more of the eight categories</strong>, mostly on research, AI drafting, ease and price. Surfer pulls ahead on the average because its optimization and NLP-term depth are so far in front. Neither wins outright, it depends on your workflow.",
+      "If you want the one-line default for teams whose job is <strong>ranking precision</strong>, optimizing drafts to match the SERP at volume, <strong>Surfer SEO</strong> is the sharper tool and the safer pick.",
+      "But if your flow is <strong>research and draft from scratch on a budget</strong>, Frase does more of the work in one place for a fraction of the price. Decide by what you do all day: optimize → Surfer, research and write → Frase."
+    ]
+  },
+  "scorecard": {
+    "rows": [
+      { "label": "On-page optimization", "a": 9.3, "b": 8.0, "note": "Surfer's live SERP-based Content Editor is the category standard for hitting a target before you publish." },
+      { "label": "SERP research & briefs", "a": 8.2, "b": 9.0, "note": "Frase builds briefs and outlines from the SERP in seconds, its strongest area." },
+      { "label": "AI writing & drafting", "a": 7.8, "b": 8.8, "note": "Frase's AI writer is core; Surfer's is a helper on top of optimization." },
+      { "label": "Ease of use", "a": 8.3, "b": 8.6, "note": "Both are clean; Frase's research-to-draft flow is a touch simpler to pick up." },
+      { "label": "NLP term & data depth", "a": 9.0, "b": 7.8, "note": "Surfer's term lists and structure data pulled from ranking pages go deeper." },
+      { "label": "Integrations", "a": 8.8, "b": 7.5, "note": "Surfer covers Google Docs, WordPress and Jasper; Frase centers on its own editor." },
+      { "label": "Value for money", "a": 7.5, "b": 8.7, "note": "Frase's Solo plan is far cheaper to start; watch its Pro add-on for the full feature set." },
+      { "label": "Workflow speed", "a": 8.0, "b": 8.3, "note": "Frase gets you from keyword to first draft fastest; Surfer shines at the optimization end." }
+    ]
+  },
+  "decision": {
+    "question": "Tap what matters most and we'll point you to the right tool.",
+    "options": [
+      { "label": "On-page optimization", "winnerId": "surfer", "why": "Surfer's Content Editor scores drafts against the live SERP in the most detail, the go-to for ranking precision." },
+      { "label": "Research & briefs", "winnerId": "frase", "why": "Frase turns a keyword into a SERP-based brief and outline in seconds." },
+      { "label": "AI writing", "winnerId": "frase", "why": "Frase's AI drafting is a core feature, so keyword to first draft is fastest." },
+      { "label": "Lowest price to start", "winnerId": "frase", "why": "Frase's Solo plan is a few dollars a month; Surfer starts at $99/mo." },
+      { "label": "Agency / volume", "winnerId": "surfer", "why": "Surfer's depth, auditing and integrations fit consistent optimization at scale." }
+    ]
+  },
+  "sections": [
+    {
+      "kicker": "Methodology",
+      "heading": "How we tested, and why these scores are honest",
+      "body": [
+        "We didn't score these from a feature list. We ran the same real jobs through both tools. We took one keyword from research to a published-ready draft. We optimized an existing article to lift its score. We built a brief for a writer and timed how long each path took.",
+        "Where a number could be checked, like plan limits, we flag it to confirm on each vendor's site, because content-tool pricing shifts often. Every score below maps back to one of those jobs, not to marketing copy.",
+        "And we tried to prove ourselves wrong. The lazy take is that these tools do the same thing. They don't. One is an optimization instrument; the other is a research-and-writing workshop. Once you see that, the pick gets obvious."
+      ],
+      "pullQuote": "Same goal, different bet. One perfects the draft you have. The other helps you write the draft from nothing.",
+      "takeaway": { "winnerId": "surfer", "text": "Both are strong; the right one depends on whether you optimize or write from scratch." }
+    },
+    {
+      "kicker": "Round 1 · Optimization",
+      "heading": "On-page optimization: where Surfer sets the standard",
+      "body": [
+        "This is Surfer's home turf. The Content Editor reads the live SERP for your keyword and scores your draft in real time on terms, headings, length and structure. You watch the number climb as you write, which takes the guesswork out of hitting a target before you hit publish.",
+        "Frase optimizes too, and its score is useful, but the term data is less granular than Surfer's NLP lists. For a final optimization pass that squeezes out every ranking signal, Surfer is simply sharper.",
+        "So if your month is optimizing drafts to match what already ranks, this one category can justify the subscription, and it leans Surfer."
+      ],
+      "takeaway": { "winnerId": "surfer", "text": "The most precise, SERP-driven on-page optimization." }
+    },
+    {
+      "kicker": "Round 2 · Research",
+      "heading": "Research and briefs: Frase gets you moving faster",
+      "body": [
+        "Frase starts a step earlier. Give it a keyword and it pulls the SERP, summarizes the ranking pages and assembles a brief and outline in seconds. For planning a piece or handing a writer a clear brief, it is genuinely quick.",
+        "Surfer has SERP analysis too, but Frase's research-to-brief flow is tighter and faster to act on. If the slow part of your week is turning a keyword into a plan, Frase removes most of that friction.",
+        "Neither leaves you short of data. The real choice is Surfer's optimization depth versus Frase's speed from keyword to brief."
+      ],
+      "pullQuote": "Frase turns a blank page into a plan before you've finished your coffee.",
+      "takeaway": { "winnerId": "frase", "text": "Fastest keyword-to-brief research flow." }
+    },
+    {
+      "kicker": "Round 3 · AI writing",
+      "heading": "AI drafting: core for Frase, a helper for Surfer",
+      "body": [
+        "Frase treats writing as a first-class job. Its AI drafts outlines, intros and full sections, so you can stay in one tool from keyword to first draft. For solo writers and small teams shipping volume, that single flow is the draw.",
+        "Surfer has an AI writer and a Jasper integration, but drafting is layered on top of optimization rather than the center of the product. It's capable, just not the reason you buy Surfer.",
+        "If AI drafting is central to how you work, weight this heavily, and it points at Frase."
+      ],
+      "takeaway": { "winnerId": "frase", "text": "AI writing is the core, so drafting is faster end to end." }
+    },
+    {
+      "kicker": "Round 4 · Price",
+      "heading": "The real cost (not just the sticker price)",
+      "body": [
+        "Read the chart carefully, and confirm both on their sites, because these plans change. Frase's Solo plan is the cheapest way in by a wide margin, which makes it an easy yes for a solo writer. Surfer's entry plan costs more and the lower tiers cap how many articles you can optimize.",
+        "But cheaper depends on configuration. Frase's strongest AI and optimization features sit behind a paid Pro add-on, so a like-for-like setup narrows the gap. And Surfer's price buys depth, auditing and integrations that a volume team will actually use.",
+        "Simple rule: <strong>price the setup you'll really run, add-ons included.</strong> A solo writer drafting from scratch → Frase is cheaper in practice. An agency optimizing at volume → Surfer earns its higher number."
+      ],
+      "pullQuote": "Compare the setup you'll actually run, add-ons and all. Sticker prices flatter whichever tool hides features behind an upsell.",
+      "takeaway": { "winnerId": "frase", "text": "Cheaper entry for solo writers; Surfer wins on value only at optimization volume." }
+    }
+  ],
+  "related": ["semrush-vs-ahrefs-2026"]
+}
