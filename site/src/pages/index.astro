@@ -96,8 +96,12 @@ const icons: Record<string, string> = {
 
   <!-- Latest reviews -->
   <section class="container-wide py-14">
-    <div class="mb-6 flex items-end justify-between">
-      <h2 class="text-2xl font-semibold sm:text-3xl">Latest reviews</h2>
+    <div class="mb-7 flex items-end justify-between border-t border-ink/15 pt-5">
+      <div class="flex items-baseline gap-4">
+        <span class="font-display text-xl font-bold tabular-nums text-cta">01</span>
+        <h2 class="text-2xl font-semibold sm:text-3xl">Latest reviews</h2>
+      </div>
+      <span class="hidden text-xs font-semibold uppercase tracking-[0.14em] text-muted sm:block">Fresh verdicts</span>
     </div>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {latest.map((a) => <ArticleCard article={{ ...a.data, slug: a.id.replace(/\.json$/, "") }} />)}
@@ -106,7 +110,13 @@ const icons: Record<string, string> = {
 
   <!-- Categories -->
   <section class="container-wide py-6 pb-20">
-    <h2 class="mb-6 text-2xl font-semibold sm:text-3xl">Browse by category</h2>
+    <div class="mb-7 flex items-end justify-between border-t border-ink/15 pt-5">
+      <div class="flex items-baseline gap-4">
+        <span class="font-display text-xl font-bold tabular-nums text-cta">02</span>
+        <h2 class="text-2xl font-semibold sm:text-3xl">Browse by category</h2>
+      </div>
+      <span class="hidden text-xs font-semibold uppercase tracking-[0.14em] text-muted sm:block">Pick a lane</span>
+    </div>
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {Object.entries(categories).map(([slug, c]) => (
         <a href={`/categories/${slug}`} class="card group relative flex items-start gap-4 overflow-hidden p-5 transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-pop">

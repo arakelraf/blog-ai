@@ -18,15 +18,23 @@ const nameById = (id: string) => article.products.find((p: any) => p.id === id)?
       const hasAside = hasShot || s.takeaway;
       return (
       <article class="scroll-mt-24" id={`dive-${i}`}>
-        {s.kicker && <p class="text-xs font-semibold uppercase tracking-wide text-muted">{s.kicker}</p>}
-        <h3 class="mt-1 text-xl font-bold sm:text-2xl">{s.heading}</h3>
+        <div class="mb-4 flex items-baseline gap-4 border-t border-ink/15 pt-5">
+          <span class="font-display text-2xl font-bold tabular-nums text-cta">{String(i + 1).padStart(2, "0")}</span>
+          <div>
+            {s.kicker && <p class="text-xs font-semibold uppercase tracking-[0.14em] text-muted">{s.kicker}</p>}
+            <h3 class="mt-0.5 text-2xl font-bold sm:text-3xl">{s.heading}</h3>
+          </div>
+        </div>
 
-        <div class={`mt-4 grid gap-7 lg:items-start ${hasAside ? "lg:grid-cols-[1fr_minmax(260px,340px)]" : ""}`}>
+        <div class={`grid gap-7 lg:items-start ${hasAside ? "lg:grid-cols-[1fr_minmax(260px,340px)]" : ""}`}>
           <div class="rich max-w-prose">
-            {s.body.map((p: string) => <p set:html={p} />)}
+            {s.body.map((p: string, pi: number) => (
+              <p set:html={p} class:list={[pi === 0 ? "first-letter:float-left first-letter:mr-2.5 first-letter:mt-1 first-letter:font-display first-letter:text-[3.25rem] first-letter:font-bold first-letter:leading-[0.72] first-letter:text-ink" : ""]} />
+            ))}
             {s.pullQuote && (
-              <blockquote class="my-6 border-l-4 border-brand pl-5">
-                <p class="text-lg font-semibold italic leading-snug text-ink">{s.pullQuote}</p>
+              <blockquote class="relative my-7 pl-6">
+                <span aria-hidden="true" class="absolute -top-3 left-0 font-display text-5xl leading-none text-cta">&ldquo;</span>
+                <p class="font-display text-xl italic leading-snug text-ink sm:text-2xl">{s.pullQuote}</p>
               </blockquote>
             )}
           </div>
